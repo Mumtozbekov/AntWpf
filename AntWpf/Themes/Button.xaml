@@ -1,0 +1,209 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:AntWpf.Controls"
+    xmlns:converters="clr-namespace:AntWpf.Converters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Theme.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Animations.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/AntIcons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type Controls:Button}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBase}" />
+        <Setter Property="Height" Value="{DynamicResource ButtonHeightBase}" />
+        <Setter Property="EffectBrush" Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource ButtonPaddingBase}" />
+        <Setter Property="FontWeight" Value="{DynamicResource ButtonFontWeight}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonDefaultBorder}" />
+        <Setter Property="Background" Value="{DynamicResource ButtonDefaultBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultForeground}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BorderThicknessBase}" />
+        <Setter Property="Controls:Control.BorderStyle" Value="{DynamicResource BorderStyleBase}" />
+        <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource ButtonBorderRadiusBase}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:Button}">
+                    <Grid>
+                        <!--  Effect  -->
+                        <Border
+                            x:Name="Effect"
+                            Margin="-1"
+                            BorderBrush="{TemplateBinding EffectBrush}"
+                            BorderThickness="0"
+                            CornerRadius="{TemplateBinding Controls:Control.CornerRadius}"
+                            Focusable="False"
+                            Opacity="0.4"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <!--  Border  -->
+                        <Controls:Border
+                            x:Name="PART_Border"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderStyle="{TemplateBinding Controls:Control.BorderStyle}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding Controls:Control.CornerRadius}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            UseLayoutRounding="True">
+                            <!--  Content  -->
+                            <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.ColumnDefinitions>
+                                    <!--  Icon  -->
+                                    <ColumnDefinition Width="Auto" />
+                                    <!--  Content  -->
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Controls:Icon
+                                    x:Name="Icon"
+                                    Margin="0,0,8,0"
+                                    Focusable="False"
+                                    Type="{TemplateBinding Icon}" />
+                                <ContentPresenter
+                                    x:Name="Content"
+                                    Grid.Column="1"
+                                    Content="{TemplateBinding Content}"
+                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                    RecognizesAccessKey="True" />
+                            </Grid>
+                        </Controls:Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" To="Pressed" />
+                                    <VisualTransition GeneratedDuration="0:0:0.3" GeneratedEasingFunction="{StaticResource EaseInOut}" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.3" GeneratedEasingFunction="{StaticResource EaseInOut}" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Focused" />
+                                <VisualState x:Name="Unfocused" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="LoadStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.2" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Loaded">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.65" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unloaded" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  Loading State  -->
+                        <Trigger Property="Loading" Value="True">
+                            <Setter TargetName="Icon" Property="Type" Value="loading" />
+                        </Trigger>
+                        <!--  Content State  -->
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="Icon" Property="Margin" Value="0" />
+                            <Setter TargetName="Icon" Property="Grid.ColumnSpan" Value="2" />
+                        </Trigger>
+                        <Trigger SourceName="Icon" Property="Type" Value="{x:Null}">
+                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.ColumnSpan" Value="2" />
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <!--  Shape Circle  -->
+                        <Trigger Property="Shape" Value="Circle">
+                            <Setter TargetName="Icon" Property="FontSize" Value="{Binding FontSize, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:AdditionConverter}, ConverterParameter=2}" />
+                        </Trigger>
+                        <EventTrigger RoutedEvent="ButtonBase.Click">
+                            <BeginStoryboard Storyboard="{StaticResource Ant.ClickAnimating}" />
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!--  Ghost State  -->
+            <Trigger Property="Ghost" Value="True">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="Background" Value="Transparent" />
+            </Trigger>
+            <!--  Primary  -->
+            <Trigger Property="Type" Value="Primary">
+                <Setter Property="EffectBrush" Value="{DynamicResource ButtonPrimaryBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonPrimaryForeground}" />
+                <Setter Property="Background" Value="{DynamicResource ButtonPrimaryBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonPrimaryBackground}" />
+            </Trigger>
+            <!--  Dashed  -->
+            <Trigger Property="Type" Value="Dashed">
+                <Setter Property="Controls:Control.BorderStyle" Value="Dashed" />
+            </Trigger>
+            <!--  Danger  -->
+            <Trigger Property="Type" Value="Danger">
+                <Setter Property="EffectBrush" Value="{DynamicResource ButtonDangerForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource ButtonDangerForeground}" />
+                <Setter Property="Background" Value="{DynamicResource ButtonDangerBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonDangerBorder}" />
+            </Trigger>
+            <!--  Size  -->
+            <Trigger Property="Size" Value="Large">
+                <Setter Property="Height" Value="{DynamicResource ButtonHeightLarge}" />
+                <Setter Property="Padding" Value="{DynamicResource ButtonPaddingLarge}" />
+                <Setter Property="FontSize" Value="{DynamicResource ButtonFontSizeLarge}" />
+            </Trigger>
+            <Trigger Property="Size" Value="Small">
+                <Setter Property="Height" Value="{DynamicResource ButtonHeightSmall}" />
+                <Setter Property="Padding" Value="{DynamicResource ButtonPaddingSmall}" />
+                <Setter Property="FontSize" Value="{DynamicResource ButtonFontSizeSmall}" />
+                <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource ButtonBorderRadiusSmall}" />
+            </Trigger>
+            <!--  Shape Circle  -->
+            <Trigger Property="Shape" Value="Circle">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Width" Value="{Binding Height, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+                <Setter Property="Controls:Control.CornerRadius" Value="{Binding Height, Mode=OneWay, RelativeSource={RelativeSource Self}, Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}" />
+            </Trigger>
+            <!--  Loading State  -->
+            <Trigger Property="Loading" Value="True">
+                <Setter Property="IsEnabled" Value="False" />
+            </Trigger>
+            <!--  Ghost States  -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Ghost" Value="True" />
+                    <Condition Property="Type" Value="Primary" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource ButtonPrimaryBackground}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Ghost" Value="True" />
+                    <Condition Property="Type" Value="Danger" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonDangerForeground}" />
+            </MultiTrigger>
+            <!--  Disabled  -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Loading" Value="False" />
+                    <Condition Property="IsEnabled" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource ButtonDisableForeground}" />
+                <Setter Property="Background" Value="{DynamicResource ButtonDisableBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ButtonDisableBorder}" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

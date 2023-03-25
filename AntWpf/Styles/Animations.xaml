@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Easing Function  -->
+    <CubicEase x:Key="EaseIn" EasingMode="EaseIn" />
+    <CubicEase x:Key="EaseOut" EasingMode="EaseOut" />
+    <CubicEase x:Key="EaseInOut" EasingMode="EaseInOut" />
+    <BackEase x:Key="EaseInBack" EasingMode="EaseIn" />
+    <BackEase x:Key="EaseOutBack" EasingMode="EaseOut" />
+    <BackEase x:Key="EaseInOutBack" EasingMode="EaseInOut" />
+    <CircleEase x:Key="EaseInCirc" EasingMode="EaseIn" />
+    <CircleEase x:Key="EaseOutCirc" EasingMode="EaseOut" />
+    <CircleEase x:Key="EaseInOutCirc" EasingMode="EaseInOut" />
+    <QuinticEase x:Key="EaseInQuint" EasingMode="EaseIn" />
+    <QuinticEase x:Key="EaseOutQuint" EasingMode="EaseOut" />
+    <QuinticEase x:Key="EaseInOutQuint" EasingMode="EaseInOut" />
+
+    <!--  Storyboards  -->
+    <!--  Button/Swtich/Tag  -->
+    <Storyboard x:Key="Ant.ClickAnimating" FillBehavior="Stop">
+        <DoubleAnimation
+            EasingFunction="{StaticResource EaseOutCirc}"
+            Storyboard.TargetName="Effect"
+            Storyboard.TargetProperty="Opacity"
+            To="0"
+            Duration="0:0:0.6" />
+        <ThicknessAnimation
+            EasingFunction="{StaticResource EaseOutCirc}"
+            Storyboard.TargetName="Effect"
+            Storyboard.TargetProperty="BorderThickness"
+            To="5.5"
+            Duration="0:0:0.2" />
+        <ThicknessAnimation
+            EasingFunction="{StaticResource EaseOutCirc}"
+            Storyboard.TargetName="Effect"
+            Storyboard.TargetProperty="Margin"
+            To="-5.5"
+            Duration="0:0:0.4" />
+    </Storyboard>
+
+    <!--  TextBox/PasswordBox/ComboBox  -->
+    <Storyboard x:Key="Ant.InputAnimating">
+        <DoubleAnimation
+            Storyboard.TargetName="Effect"
+            Storyboard.TargetProperty="Opacity"
+            To="0.2" />
+    </Storyboard>
+
+</ResourceDictionary>

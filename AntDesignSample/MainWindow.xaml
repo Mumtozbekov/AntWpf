@@ -1,0 +1,26 @@
+﻿<Window x:Class="AntDesignSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" MinHeight="350" MinWidth="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Ant:Button Type="Primary" Margin="10,0" Content="Button1"/>
+            <Ant:Button Type="Primary" Shape="Circle" Icon="search" Margin="10,0" />
+            <Ant:Button Type="Dashed" Margin="10,0" Content="Button2"/>
+            <Ant:Button Type="Danger" Margin="10,0" Content="Button3"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
+            <TextBox Ant:Input.Placeholder="Place holder" Margin="0,10"/>
+            <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Controls="clr-namespace:AntWpf.Controls">
+
+    <!-- TextBox/PasswordBox/ComboBox -->
+    <Style x:Key="Ant.Input" TargetType="{x:Type Control}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBase}" />
+        <Setter Property="Height" Value="{DynamicResource InputHeightBase}" />
+        <Setter Property="Padding" Value="{DynamicResource InputPaddingBase}" />
+        <Setter Property="Foreground" Value="{DynamicResource InputForeground}" />
+        <Setter Property="Background" Value="{DynamicResource InputBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BorderThicknessBase}" />
+        <Setter Property="Controls:Control.BorderStyle" Value="{DynamicResource BorderStyleBase}" />
+        <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource BorderRadiusBase}" />
+        <Setter Property="Controls:Input.PlaceholderBrush" Value="{DynamicResource InputPlaceholderBrush}" />
+        <Style.Triggers>
+            <!-- Sizes -->
+            <Trigger Property="Controls:Control.Size" Value="Large">
+                <Setter Property="FontSize" Value="{DynamicResource FontSizeLarge}" />
+                <Setter Property="Height" Value="{DynamicResource InputHeightLarge}" />
+                <Setter Property="Padding" Value="{DynamicResource InputPaddingLarge}" />
+            </Trigger>
+            <Trigger Property="Controls:Control.Size" Value="Small">
+                <Setter Property="Height" Value="{DynamicResource InputHeightSmall}" />
+                <Setter Property="Padding" Value="{DynamicResource InputPaddingSmall}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource InputMouseOverBorderBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource OutlineBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+                <Setter Property="Background" Value="{DynamicResource InputDisabledBackground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- PasswordBox/ComboBox -->
+    <Style x:Key="Ant.EditableTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <!-- TextBox will automatically handle padding, so you need to change the margin to a negative value. -->
+                    <ScrollViewer x:Name="PART_ContentHost"
+                                  IsTabStop="False"
+                                  BorderThickness="0"
+                                  Background="{x:Null}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- TextBox/PasswordBox/ComboBox -->
+    <Style x:Key="Ant.Clearable" TargetType="{x:Type FrameworkElement}">
+        <Setter Property="Opacity" Value="0.65" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
