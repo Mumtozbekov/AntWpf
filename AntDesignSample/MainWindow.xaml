@@ -11,16 +11,28 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Ant:Button Type="Primary" Margin="10,0" Content="Button1"/>
             <Ant:Button Type="Primary" Shape="Circle" Icon="search" Margin="10,0" />
             <Ant:Button Type="Dashed" Margin="10,0" Content="Button2"/>
             <Ant:Button Type="Danger" Margin="10,0" Content="Button3"/>
-        </StackPanel>
+            <Ant:Button Type="Primary" Margin="10,10" Loading="True" Content="Loading"/>
+            <Ant:Button Type="Primary" Shape="Circle"  Margin="10,10" Loading="True" />
+        </WrapPanel>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
             <TextBox Ant:Input.Placeholder="Place holder" Margin="0,10"/>
             <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
         </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
+            <CheckBox Margin="5,0" Content="Checked" IsChecked="True"/>
+            <CheckBox Margin="5,0" Content="UnChecked"/>
+            <CheckBox Margin="5,0" Content="Disabled" IsEnabled="False"/>
+        </StackPanel>
+        
     </Grid>
 </Window>

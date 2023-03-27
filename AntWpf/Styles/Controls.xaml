@@ -1,11 +1,14 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:converters="clr-namespace:AntWpf.Converters">
     <ResourceDictionary.MergedDictionaries>
 
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/CheckBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/PasswordBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
+   
 
     <Style BasedOn="{StaticResource Ant.TextBox}" TargetType="TextBox" />
     <Style BasedOn="{StaticResource Ant.PasswordBox}" TargetType="PasswordBox" />
+    <Style BasedOn="{StaticResource Ant.CheckBox}" TargetType="CheckBox" />
 </ResourceDictionary>
