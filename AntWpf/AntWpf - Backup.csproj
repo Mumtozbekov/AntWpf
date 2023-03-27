@@ -1,9 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<Version>1.0.2</Version>
-	</PropertyGroup>
-	
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
@@ -12,12 +8,10 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIcon>logos_ant-design.png</PackageIcon>
     <RepositoryUrl>https://github.com/Mumtozbekov/AntWpf</RepositoryUrl>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
-	  <FileVersion>1.0.1.0</FileVersion>
-	  <RepositoryType>git</RepositoryType>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <Authors>$(AssemblyName)Mumtozbekov</Authors>
+	  <FileVersion>1.0.1</FileVersion>
   </PropertyGroup>
 
 

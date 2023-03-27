@@ -1,16 +1,11 @@
-﻿<p align="center">
-  <a href="https://github.com/Mumtozbekov/AntWpf
-    <img src="https://github.com/Mumtozbekov/AntWpf/raw/master/logos_ant-design.png?sanitize=true">
-  </a>
-</p>
+﻿# AntWpf
+A UI framework using [ant design](https://ant.design/docs/spec/introduce) language to help developers build their own WPF applications.
 
-<h1 align="center">Ant Design Blazor</h1>
+##### Under development, not suitable for production environment
 
-<div align="center">
 
-A rich set of enterprise-class UI components based on Ant Design and Blazor.
 
-[![AntDesign](https://img.shields.io/nuget/dt/AntDesign.svg?style=flat-square)](https://www.nuget.org/packages/AntWpf/)
+[![AntDesign](https://img.shields.io/nuget/dt/AntWpf.svg?style=flat-square)](https://www.nuget.org/packages/AntWpf/)
 [![AntDesign](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/LICENSE.txt)
 
 
