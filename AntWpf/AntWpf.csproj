@@ -1,18 +1,35 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>ant_wpf.ico</ApplicationIcon>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageIcon>logos_ant-design.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Mumtozbekov/AntWpf</RepositoryUrl>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
 
   <ItemGroup>
     <Content Include="ant_wpf.ico" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\..\Users\Mumtozbekov\Downloads\logos_ant-design.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
