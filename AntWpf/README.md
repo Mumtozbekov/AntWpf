@@ -1,4 +1,4 @@
-﻿# AntWpf
+# AntWpf
 A UI framework using [ant design](https://ant.design/docs/spec/introduce) language to help developers build their own WPF applications.
 
 ##### Under development, not suitable for production environment
@@ -18,7 +18,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
 </Application>
 ```
 
-![Buttons](https://github.com/mumtozbekov/AntWpf/blob/master/images/buttons.png?raw=true)
+![Buttons](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/buttons.png?raw=true)
 ```
     xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf"
 
@@ -32,7 +32,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     </WrapPanel>
 ```
 
-![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/images/buttons.png?raw=true)
+![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/inputs.png?raw=true)
 ```
     xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf"
 
