@@ -5,6 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/CheckBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/PasswordBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/AntIcon.xaml" />
     </ResourceDictionary.MergedDictionaries>
    
 

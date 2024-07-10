@@ -23,13 +23,7 @@
 
   <ItemGroup>
     <Content Include="ant_wpf.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\Users\Mumtozbekov\Downloads\logos_ant-design.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <Content Include="logos_ant-design.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +32,17 @@
 
   <ItemGroup>
 	  <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="images\logos_ant-design.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="logos_ant-design.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
