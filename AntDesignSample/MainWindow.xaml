@@ -28,10 +28,19 @@
             <TextBox Ant:Input.Placeholder="Place holder" Margin="0,10"/>
             <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
-            <CheckBox Margin="5,0" Content="Checked" IsChecked="True"/>
-            <CheckBox Margin="5,0" Content="UnChecked"/>
-            <CheckBox Margin="5,0" Content="Disabled" IsEnabled="False"/>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
+                <CheckBox Margin="5,0" Content="Checked" IsChecked="True"/>
+                <CheckBox Margin="5,0" Content="UnChecked"/>
+                <CheckBox Margin="5,0" Content="Disabled" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300" Margin="0,12" HorizontalAlignment="Center">
+                <Ant:Switch Margin="5,0" UnCheckedContent="0" Content="1" IsChecked="True"/>
+                <Ant:Switch Margin="5,0" UnCheckedContent="UnChecked" IsChecked="True" Content="Checked"/>
+                <Ant:Switch Margin="5,0" IsEnabled="False"/>
+                <Ant:Switch Margin="5,0"  IsChecked="True"  Loading="True"/>
+            </StackPanel>
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
