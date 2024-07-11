@@ -15,7 +15,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Ant:Button Type="Primary" Margin="10,0" Content="Button1"/>
             <Ant:Button Type="Primary" Shape="Circle" Icon="search" Margin="10,0" />
@@ -33,6 +33,30 @@
             <CheckBox Margin="5,0" Content="UnChecked"/>
             <CheckBox Margin="5,0" Content="Disabled" IsEnabled="False"/>
         </StackPanel>
-        
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox Ant:Input.Placeholder="Icon key" Margin="10,5" Name="iconSearchBox" TextChanged="iconSearchBox_TextChanged"/>
+
+            <ListBox Grid.Row="1" Margin="10,10"  Name="iconsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel >
+
+                            <Ant:AntIcon Key="{Binding }" Margin="4" Height="32" HorizontalAlignment="Center" Width="32"/>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+
     </Grid>
 </Window>
