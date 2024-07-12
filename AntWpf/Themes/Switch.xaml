@@ -1,0 +1,229 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Controls ="clr-namespace:AntWpf.Controls"
+                    xmlns:converters="clr-namespace:AntWpf.Converters" xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Animations.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+    <Style x:Key="Ant.SwitchFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Control}">
+                    <Border Opacity="0.2"
+                            Margin="-2"
+                            BorderThickness="2.5"
+                            BorderBrush="{DynamicResource PrimaryBrush}"
+                            CornerRadius="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}, 
+                                                Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <sys:Double x:Key="Zero">0</sys:Double>
+    <Style TargetType="{x:Type Controls:Switch}">
+        <Setter Property="MinWidth" Value="44" />
+        <Setter Property="Padding" Value="6 0" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="Height" Value="{DynamicResource SwitchHeight}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}" />
+        <Setter Property="Background" Value="{DynamicResource DisabledBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ComponentBackground}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource Ant.SwitchFocusVisualStyle}" />
+        <Setter Property="Controls:Control.CornerRadius" Value="{Binding Height, Mode=OneWay, RelativeSource={RelativeSource Self}, 
+                                                                    Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:Switch}">
+                    <Grid>
+                        <!-- Effect -->
+                        <Border x:Name="Effect"
+                                Margin="-1"
+                                Opacity="0.4"
+                                Focusable="False"
+                                BorderThickness="0"
+                                BorderBrush="{DynamicResource SwitchBrush}"
+                                CornerRadius="{Binding CornerRadius, Mode=OneWay, ElementName=Border}" />
+                        <!-- Border -->
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(Controls:Control.CornerRadius), Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Grid ClipToBounds="True">
+
+                            <!-- Animated part -->
+                            <StackPanel x:Name="ContentRoot"  Orientation="Horizontal" VerticalAlignment="Center" Tag="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}, Converter={converters:MathConverter Operation=Divide}, ConverterParameter=2}">
+                             
+                                <StackPanel.RenderTransform>
+                                    <TranslateTransform>
+                                        <TranslateTransform.X>
+                                            <MultiBinding Converter="{converters:MathMultiConverter Operation=Subtract}">
+                                                <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                     Path="ActualWidth"/>
+                                                <Binding ElementName="PART_Dot"
+                                                     Converter="{converters:MathConverter Operation=Subtract}"
+                                                     ConverterParameter="-6"
+                                                     Path="ActualWidth"/>
+                                            </MultiBinding>
+                                        </TranslateTransform.X>
+                                    </TranslateTransform>
+                                </StackPanel.RenderTransform>
+                                <!-- Content -->
+                                <!--<Border Background="Red" Width="5" Height="5"/>-->
+                                <ContentPresenter x:Name="Content"
+                                          HorizontalAlignment="Center"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" >
+                                    <ContentPresenter.Margin>
+                                        <MultiBinding Converter="{converters:DoubleToThicknessMultiConverter}" ConverterParameter="3">
+
+                                            <Binding Mode="OneWay"
+                                             Path="ActualWidth"
+                                                 Converter="{converters:MathConverter Operation=Multiply}"
+                                                 ConverterParameter="0"
+                                             RelativeSource="{RelativeSource Self}" />
+                                            <Binding Mode="OneWay"
+                                                 RelativeSource="{RelativeSource Self}"
+                                             Path="ActualWidth" />
+                                        </MultiBinding>
+                                    </ContentPresenter.Margin>
+                                </ContentPresenter>
+                                <Rectangle Width="3" Name="ContentSpace"/>
+                                <!-- Dot -->
+                                <Border x:Name="PART_Dot"
+                                Focusable="False"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                RenderTransformOrigin="0,0"
+                                    Tag="{Binding RelativeSource={RelativeSource Self},Path=ActualWidth, Converter={converters:MathConverter Operation=Divide},ConverterParameter=2}"
+                                    Grid.Column="1"
+                                    Margin="2,0,2,0"
+                                Background="{TemplateBinding Foreground}"
+                                Width="{Binding Height, Mode=OneWay, RelativeSource={RelativeSource Self}}"
+                                Height="{Binding Height, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, 
+                                            Converter={converters:SubtractionConverter}, ConverterParameter=4}"
+                                CornerRadius="{Binding Height, Mode=OneWay, RelativeSource={RelativeSource Self}, 
+                                                    Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}">
+
+                                    <Border.Effect>
+                                        <DropShadowEffect  Direction="270" BlurRadius="4" ShadowDepth="1" Color="#005317" Opacity="0.2" />
+                                    </Border.Effect>
+                                    <Controls:Icon x:Name="Icon"
+                                           Type="loading"
+                                           Foreground="{DynamicResource TextBrush}"
+                                           Visibility="{Binding Loading, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, 
+                                                            Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                </Border>
+                                <!-- UnCheckedContent -->
+                                <ContentPresenter x:Name="UnCheckedContent"
+                                            HorizontalAlignment="Center"
+                                              Grid.Column="2"
+                                            Margin="{TemplateBinding Padding}"
+                                            Content="{TemplateBinding UnCheckedContent}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                            </StackPanel>
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="Pressed">
+                                        <Storyboard>
+                                            <ThicknessAnimation Storyboard.TargetName="PART_Dot"
+                                                                Storyboard.TargetProperty="Margin"
+                                                                EasingFunction="{StaticResource EaseInOutCirc}"
+                                                                Duration="0:0:0.0" />
+                                            <DoubleAnimation Storyboard.TargetName="PART_Dot"
+                                                             Storyboard.TargetProperty="Width"
+                                                             EasingFunction="{StaticResource EaseInOutCirc}"
+                                                             Duration="0:0:0.0" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="PART_Dot"
+                                                            Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                                            EasingFunction="{StaticResource EaseInOutCirc}"
+                                                            Duration="0:0:0.36" />
+                                        <DoubleAnimation Storyboard.TargetName="ContentRoot"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                         EasingFunction="{StaticResource EaseInOutCirc}"
+                                                         Duration="0:0:0.36"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="PART_Dot"
+                                                            Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                                            EasingFunction="{StaticResource EaseInOutCirc}"
+                                                            Duration="0:0:0.36"
+                                                            To="3 0 0 0" />
+                                        <DoubleAnimation Storyboard.TargetName="ContentRoot"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                         EasingFunction="{StaticResource EaseInOutCirc}"
+                                                         To="0"
+                                                         Duration="0:0:0.36"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Content" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="PART_Dot" Property="RenderTransformOrigin" Value="1,0" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource SwitchBrush}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource SwitchBrush}" />
+                            <!--<Setter TargetName="Content" Property="Content" Value="{Binding Content, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />-->
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="ContentSpace"/>
+                        </Trigger>
+                        <Trigger Property="Size" Value="Small">
+                            <Setter TargetName="Icon" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform  ScaleX="0.75" ScaleY="0.75" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Icon" Property="Spin" Value="True" />
+                        </Trigger>
+                        <EventTrigger RoutedEvent="ButtonBase.Click">
+                            <BeginStoryboard Storyboard="{StaticResource Ant.ClickAnimating}" />
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Loading" Value="True">
+                <Setter Property="IsEnabled" Value="False" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{DynamicResource SwitchDisabledOpacity}" />
+            </Trigger>
+            <Trigger Property="Size" Value="Small">
+                <Setter Property="Padding" Value="3 0" />
+                <Setter Property="MinWidth" Value="28" />
+                <Setter Property="Height" Value="{DynamicResource SwitchHeightSmall}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

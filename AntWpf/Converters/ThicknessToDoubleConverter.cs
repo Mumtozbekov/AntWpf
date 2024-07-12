@@ -42,30 +42,5 @@
         }
     }
 
-    public class DoubleToThicknessMultiConverter : MarkupExtension, IMultiValueConverter
-    {
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
-        {
-            var parent = values.Length > 0 ? values[0] as double? : null;
-            var self   = values.Length > 1 ? values[1] as double? : null;
-
-            if (parent == null || self == null)
-            {
-                return default(Thickness);
-            }
-
-            double.TryParse(parameter as string, out double param);
-            return new Thickness(parent.Value - self.Value - param, 0.0, 0.0, 0.0);
-        }
-
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-        {
-            return targetTypes.Select(t => DependencyProperty.UnsetValue).ToArray();
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
-    }
+    
 }

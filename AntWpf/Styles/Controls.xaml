@@ -2,6 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Switch.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/CheckBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/PasswordBox.xaml" />
