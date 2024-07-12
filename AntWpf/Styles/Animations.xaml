@@ -36,6 +36,26 @@
             To="-5.5"
             Duration="0:0:0.4" />
     </Storyboard>
+    <Storyboard x:Key="Ant.ClickAnimating.Circle" FillBehavior="Stop">
+        <DoubleAnimation
+            EasingFunction="{StaticResource EaseOutCirc}"
+            Storyboard.TargetName="Effect"
+            Storyboard.TargetProperty="Opacity"
+            To="0"
+            Duration="0:0:0.6" />
+        <DoubleAnimation
+            EasingFunction="{StaticResource EaseOutCirc}"
+            Storyboard.TargetName="Effect"
+            Storyboard.TargetProperty="StrokeThickness"
+            To="5.5"
+            Duration="0:0:0.2" />
+        <ThicknessAnimation
+            EasingFunction="{StaticResource EaseOutCirc}"
+            Storyboard.TargetName="Effect"
+            Storyboard.TargetProperty="Margin"
+            To="-5.5"
+            Duration="0:0:0.4" />
+    </Storyboard>
 
     <!--  TextBox/PasswordBox/ComboBox  -->
     <Storyboard x:Key="Ant.InputAnimating">

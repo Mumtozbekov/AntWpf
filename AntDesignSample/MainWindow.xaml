@@ -41,6 +41,11 @@
                 <Ant:Switch Margin="5,0" IsEnabled="False"/>
                 <Ant:Switch Margin="5,0"  IsChecked="True"  Loading="True"/>
             </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300" Margin="0,12" HorizontalAlignment="Center">
+                <RadioButton Margin="5,0" GroupName="0" Content="Checked" IsChecked="True"/>
+                <RadioButton Margin="5,0" GroupName="0" Content="UnChecked" />
+                <RadioButton Margin="5,0" GroupName="0" Content="Disabled" IsEnabled="False" />
+            </StackPanel>
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
