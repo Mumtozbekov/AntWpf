@@ -27,6 +27,11 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
             <TextBox Ant:Input.Placeholder="Place holder" Margin="0,10"/>
             <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
+            <ComboBox Margin="0,10" >
+                <ComboBoxItem Content="Itemm 1"/>
+                <ComboBoxItem Content="Itemm 3"/>
+                <ComboBoxItem Content="Itemm 4"/>
+            </ComboBox>
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
 
@@ -40,6 +45,11 @@
                 <Ant:Switch Margin="5,0" UnCheckedContent="UnChecked" IsChecked="True" Content="Checked"/>
                 <Ant:Switch Margin="5,0" IsEnabled="False"/>
                 <Ant:Switch Margin="5,0"  IsChecked="True"  Loading="True"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300" Margin="0,12" HorizontalAlignment="Center">
+                <RadioButton Margin="5,0" GroupName="0" Content="Checked" IsChecked="True"/>
+                <RadioButton Margin="5,0" GroupName="0" Content="UnChecked" />
+                <RadioButton Margin="5,0" GroupName="0" Content="Disabled" IsEnabled="False" />
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="1">
