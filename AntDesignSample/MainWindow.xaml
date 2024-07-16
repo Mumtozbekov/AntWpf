@@ -27,6 +27,11 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
             <TextBox Ant:Input.Placeholder="Place holder" Margin="0,10"/>
             <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
+            <ComboBox Margin="0,10" >
+                <ComboBoxItem Content="Itemm 1"/>
+                <ComboBoxItem Content="Itemm 3"/>
+                <ComboBoxItem Content="Itemm 4"/>
+            </ComboBox>
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
 

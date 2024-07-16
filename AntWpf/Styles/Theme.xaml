@@ -22,7 +22,7 @@
     <Color x:Key="TextSecondaryColor">#A6000000</Color>
     <Color x:Key="TextTertiaryColor">#73000000</Color>
     <Color x:Key="BorderColorBase">#D9D9D9</Color>
-    <Color x:Key="BackgroundColorLight">#FAFAFA</Color>
+    <Color x:Key="BackgroundColorLight">#E6F4FF</Color>
     <Color x:Key="BackgroundColorBase">#F5F5F5</Color>
 
     <Color x:Key="DisabledColor">#3F000000</Color>
@@ -123,7 +123,7 @@
     <SolidColorBrush
         x:Key="ItemMouseOverBackground"
         Options:Freeze="True"
-        Color="#e6f7ff" />
+        Color="#0A000000" />
 
     <!--  LINK  -->
     <SolidColorBrush
