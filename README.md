@@ -37,11 +37,38 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf"
 
     <StackPanel Grid.Row="1" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
-       <TextBox Ant:Input.Placeholder="Place holder" Margin="0,10"/>
-        <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
+      <TextBox Ant:Input.Placeholder="Place holder" Margin="0,10"/>
+      <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
+      <ComboBox Margin="0,10" >
+       <ComboBoxItem Content="Itemm 1"/>
+       <ComboBoxItem Content="Itemm 3"/>
+       <ComboBoxItem Content="Itemm 4"/>
+     </ComboBox>
     </StackPanel>
 ```
-
+![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/check_radios.png?raw=true)
+```
+  <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
+    <CheckBox Margin="5,0" Content="Checked" IsChecked="True"/>
+    <CheckBox Margin="5,0" Content="UnChecked"/>
+    <CheckBox Margin="5,0" Content="Disabled" IsEnabled="False"/>
+</StackPanel>
+<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300" Margin="0,12" HorizontalAlignment="Center">
+    <Ant:Switch Margin="5,0" UnCheckedContent="0" Content="1" IsChecked="True"/>
+    <Ant:Switch Margin="5,0" UnCheckedContent="UnChecked" IsChecked="True" Content="Checked"/>
+    <Ant:Switch Margin="5,0" IsEnabled="False"/>
+    <Ant:Switch Margin="5,0"  IsChecked="True"  Loading="True"/>
+</StackPanel>
+<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300" Margin="0,12" HorizontalAlignment="Center">
+    <RadioButton Margin="5,0" GroupName="0" Content="Checked" IsChecked="True"/>
+    <RadioButton Margin="5,0" GroupName="0" Content="UnChecked" />
+    <RadioButton Margin="5,0" GroupName="0" Content="Disabled" IsEnabled="False" />
+</StackPanel>
+```
+![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/icons.png?raw=true)
+```
+  <Ant:AntIcon Key="{AntCloudOutlined}" Margin="4" Height="32" HorizontalAlignment="Center" Width="32"/>
+```
 [![AntDesign](https://img.shields.io/nuget/dt/AntWpf)](https://www.nuget.org/packages/AntWpf/)
 [![AntDesign](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/LICENSE.txt)
 
