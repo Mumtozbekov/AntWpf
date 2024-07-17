@@ -3,24 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntWpf", "AntWpf\AntWpf.csproj", "{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntWpf", "AntWpf\AntWpf.csproj", "{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntDesignSample", "AntDesignSample\AntDesignSample.csproj", "{E9120D98-63D7-4773-99C4-DFAB3F3D6450}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntDesignSample", "AntDesignSample\AntDesignSample.csproj", "{E9120D98-63D7-4773-99C4-DFAB3F3D6450}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Debug|x86.ActiveCfg = Debug|x86
+		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Debug|x86.Build.0 = Debug|x86
 		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Release|x86.ActiveCfg = Release|x86
+		{3742B06E-2FF9-4E45-9E0F-E6A5481D02B0}.Release|x86.Build.0 = Release|x86
 		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Debug|x86.ActiveCfg = Debug|x86
+		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Debug|x86.Build.0 = Debug|x86
 		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Release|x86.ActiveCfg = Release|x86
+		{E9120D98-63D7-4773-99C4-DFAB3F3D6450}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
