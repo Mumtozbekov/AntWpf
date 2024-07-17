@@ -67,7 +67,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
 ```
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/icons.png?raw=true)
 ```
-  <Ant:AntIcon Key="{AntCloudOutlined}" Margin="4" Height="32" HorizontalAlignment="Center" Width="32"/>
+  <Ant:AntIcon Key="{AntCloudOutlined}" />
 ```
 [![AntDesign](https://img.shields.io/nuget/dt/AntWpf)](https://www.nuget.org/packages/AntWpf/)
 [![AntDesign](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/LICENSE.txt)
