@@ -18,6 +18,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
 </Application>
 ```
 ##Buttons
+
 ![Buttons](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/buttons.png?raw=true)
 ```
     xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf"
@@ -32,6 +33,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     </WrapPanel>
 ```
 ##Inputs
+
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/inputs.png?raw=true)
 ```
     xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf"
@@ -47,6 +49,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     </StackPanel>
 ```
 #CheckBoxes & RadioButtons
+
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/check_radios.png?raw=true)
 ```
   <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" MinWidth="300"  HorizontalAlignment="Center">
@@ -67,6 +70,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
 </StackPanel>
 ```
 #ProgressBars
+
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/progress_bar.png?raw=true)
 ```
  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -77,6 +81,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
  <ProgressBar Value="100"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
 ```
 #Icons
+
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/icons.png?raw=true)
 ```
   <Ant:AntIcon Key="{AntCloudOutlined}" Margin="4" Height="32" HorizontalAlignment="Center" Width="32"/>
