@@ -17,7 +17,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     </Application.Resources>
 </Application>
 ```
-##Buttons
+## Buttons
 
 ![Buttons](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/buttons.png?raw=true)
 ```
@@ -32,7 +32,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
         <Ant:Button Type="Primary" Shape="Circle"  Margin="10,10" Loading="True" />
     </WrapPanel>
 ```
-##Inputs
+## Inputs
 
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/inputs.png?raw=true)
 ```
@@ -48,7 +48,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
      </ComboBox>
     </StackPanel>
 ```
-#CheckBoxes & RadioButtons
+# CheckBoxes & RadioButtons
 
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/check_radios.png?raw=true)
 ```
@@ -69,7 +69,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     <RadioButton Margin="5,0" GroupName="0" Content="Disabled" IsEnabled="False" />
 </StackPanel>
 ```
-#ProgressBars
+# ProgressBars
 
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/progress_bar.png?raw=true)
 ```
@@ -80,7 +80,7 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
  <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}"   Margin="0,24,0,12"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
  <ProgressBar Value="100"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
 ```
-#Icons
+# Icons
 
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/icons.png?raw=true)
 ```
