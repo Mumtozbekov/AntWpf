@@ -74,7 +74,7 @@
                         </Border>
                         <TextBlock x:Name="ValueContent"
                                    Grid.Column="1"
-                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Value, StringFormat='{}{0}%'}"
+                                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Value, StringFormat='{}{0:F0}%'}"
                                     VerticalAlignment="Center" Margin="4,-2,0,0" 
                                     Foreground="{DynamicResource InputForeground}"/>
                         <Grid  VerticalAlignment="Center" Margin="4,0" 
@@ -186,7 +186,7 @@
                             </Path>
                         </Canvas>
                         <TextBlock x:Name="ValueContent"
-                            Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Value, StringFormat='{}{0}%'}"
+                            Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Value, StringFormat='{}{0:F0}%'}"
                                    VerticalAlignment="Center" 
                                    HorizontalAlignment="Center" 
                                    FontSize="22"

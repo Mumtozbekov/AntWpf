@@ -11,14 +11,14 @@
 
         <Grid >
             <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
             <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Ant:Button Type="Primary" Margin="10,0" Content="Button1"/>
@@ -82,8 +82,13 @@
             </Grid>
 
             <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <ProgressBar Value="67" Margin="0,12" Maximum="100" BorderThickness="8" Minimum="0"  Width="67" Style="{StaticResource Ant.CircularProgressBar}"/> 
-                <ProgressBar Value="100" Margin="0,12"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" /> 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}" Margin="12,0" Maximum="100" BorderThickness="8" Minimum="0"  Width="67" Style="{StaticResource Ant.CircularProgressBar}"/>
+                    <ProgressBar  Value="100"  Margin="12,0" Maximum="100" BorderThickness="8" Minimum="0"  Width="67" Style="{StaticResource Ant.CircularProgressBar}"/>
+                </StackPanel>
+                <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}"   Margin="0,24,0,12"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
+                <ProgressBar Value="100"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
+                <Slider x:Name="sld" Minimum="0" Maximum="100" SmallChange="1" Margin="0,24" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True"/>
             </StackPanel>
 
         </Grid>
