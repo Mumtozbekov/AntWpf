@@ -12,6 +12,8 @@
     <Color x:Key="InfoColor">#1890FF</Color>
     <Color x:Key="SuccessColor">#52C41A</Color>
     <Color x:Key="ProcessingColor">#1890FF</Color>
+    <Color x:Key="Blue3">#ADC6FF</Color>
+    <Color x:Key="Blue4">#85A5FF</Color>
     <Color x:Key="ErrorColor">#F5222D</Color>
     <Color x:Key="HighlightColor">#F5222D</Color>
     <Color x:Key="WarningColor">#FAAD14</Color>
@@ -22,6 +24,7 @@
     <Color x:Key="TextSecondaryColor">#A6000000</Color>
     <Color x:Key="TextTertiaryColor">#73000000</Color>
     <Color x:Key="BorderColorBase">#D9D9D9</Color>
+    <Color x:Key="BorderColorSecondary">#f0f0f0</Color>
     <Color x:Key="BackgroundColorLight">#E6F4FF</Color>
     <Color x:Key="BackgroundColorBase">#F5F5F5</Color>
 
@@ -144,6 +147,10 @@
         x:Key="BorderBrushBase"
         Options:Freeze="True"
         Color="{StaticResource BorderColorBase}" />
+    <SolidColorBrush
+        x:Key="BorderBrushSecondary"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorSecondary}" />
     <SolidColorBrush
         x:Key="BorderBrushSplit"
         Options:Freeze="True"
@@ -371,4 +378,13 @@
         Options:Freeze="True"
         Color="{StaticResource PrimaryColor}" />
 
+    <!--Slider-->
+    <SolidColorBrush
+     x:Key="SliderBackgroundBrush"
+     Options:Freeze="True"
+     Color="{StaticResource Blue3}" />
+    <SolidColorBrush
+     x:Key="SliderHoverBrush"
+     Options:Freeze="True"
+     Color="{StaticResource Blue4}" />
 </ResourceDictionary>
