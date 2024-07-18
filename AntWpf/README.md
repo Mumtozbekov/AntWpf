@@ -65,6 +65,15 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     <RadioButton Margin="5,0" GroupName="0" Content="Disabled" IsEnabled="False" />
 </StackPanel>
 ```
+![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/progress_bar.png?raw=true)
+```
+ <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+    <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}" Margin="12,0" Maximum="100" BorderThickness="8" Minimum="0"  Width="67" Style="{StaticResource Ant.CircularProgressBar}"/>
+    <ProgressBar  Value="100"  Margin="12,0" Maximum="100" BorderThickness="8" Minimum="0"  Width="67" Style="{StaticResource Ant.CircularProgressBar}"/>
+ </StackPanel>
+ <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}"   Margin="0,24,0,12"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
+ <ProgressBar Value="100"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
+```
 ![Inputs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/icons.png?raw=true)
 ```
   <Ant:AntIcon Key="{AntCloudOutlined}" Margin="4" Height="32" HorizontalAlignment="Center" Width="32"/>

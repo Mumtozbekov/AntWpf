@@ -88,7 +88,7 @@
                 </StackPanel>
                 <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}"   Margin="0,24,0,12"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
                 <ProgressBar Value="100"  Maximum="100" IsIndeterminate="False"  Minimum="0"  Width="300" />
-                <Slider x:Name="sld" Minimum="0" Maximum="100" SmallChange="1" Margin="0,24" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True"/>
+                <Slider x:Name="sld" Value="33" Minimum="0" Maximum="100" SmallChange="1" Margin="0,24" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True"/>
             </StackPanel>
 
         </Grid>

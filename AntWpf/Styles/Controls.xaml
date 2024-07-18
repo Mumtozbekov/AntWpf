@@ -9,6 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/RadioButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/PasswordBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Slider.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/AntIcon.xaml" />
     </ResourceDictionary.MergedDictionaries>
    
