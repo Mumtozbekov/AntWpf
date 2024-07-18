@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>1.0.4</Version>
+		<Version>1.0.5</Version>
 		<Platforms>AnyCPU;x86</Platforms>
 	</PropertyGroup>
 	
@@ -14,8 +14,8 @@
     <PackageIcon>logos_ant-design.png</PackageIcon>
     <RepositoryUrl>https://github.com/Mumtozbekov/AntWpf</RepositoryUrl>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
-	  <AssemblyVersion>1.0.1.1</AssemblyVersion>
-	  <FileVersion>1.0.1.1</FileVersion>
+	  <AssemblyVersion>1.0.2.0</AssemblyVersion>
+	  <FileVersion>1.0.2.0</FileVersion>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <Authors>$(AssemblyName)Mumtozbekov</Authors>
