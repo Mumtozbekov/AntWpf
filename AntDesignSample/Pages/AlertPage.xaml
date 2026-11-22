@@ -1,0 +1,59 @@
+<UserControl x:Class="AntDesignSample.Pages.AlertPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf">
+    <UserControl.Resources>
+        <Style TargetType="Ant:Alert" BasedOn="{StaticResource {x:Type Ant:Alert}}">
+            <Setter Property="Margin" Value="0,0,0,12" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24" MaxWidth="720" HorizontalAlignment="Left">
+
+            <TextBlock Text="Types" Style="{StaticResource Sample.SectionTitle}" />
+            <Ant:Alert Type="Success" Message="Success Text" />
+            <Ant:Alert Type="Info" Message="Info Text" />
+            <Ant:Alert Type="Warning" Message="Warning Text" />
+            <Ant:Alert Type="Error" Message="Error Text" />
+
+            <TextBlock Text="Icon" Style="{StaticResource Sample.SectionTitle}" />
+            <Ant:Alert Type="Success" ShowIcon="True" Message="Success Tips" />
+            <Ant:Alert Type="Info" ShowIcon="True" Message="Informational Notes" />
+            <Ant:Alert Type="Warning" ShowIcon="True" Message="Warning" />
+            <Ant:Alert Type="Error" ShowIcon="True" Message="Error" />
+
+            <TextBlock Text="Description" Style="{StaticResource Sample.SectionTitle}" />
+            <Ant:Alert Type="Success" ShowIcon="True" Message="Success Tips" Description="Detailed description and advice about successful copywriting." />
+            <Ant:Alert Type="Error" ShowIcon="True" Message="Error" Description="This is an error message about copywriting." />
+            <Ant:Alert Type="Info" Message="Informational Notes" Description="Additional description and information about copywriting." />
+
+            <TextBlock Text="Closable" Style="{StaticResource Sample.SectionTitle}" />
+            <StackPanel x:Name="closableAlerts">
+                <Ant:Alert Type="Warning" Closable="True" Message="Warning Text Warning Text Warning Text Warning Text" Closed="Alert_Closed" />
+                <Ant:Alert Type="Error" Closable="True" ShowIcon="True" Message="Error Text" Description="Error Description Error Description Error Description Error Description" Closed="Alert_Closed" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Ant:Button Content="Restore" Click="Restore_Click" Margin="0,0,12,0" />
+                <TextBlock x:Name="eventLog" VerticalAlignment="Center" Foreground="{DynamicResource TextSecondaryBrush}" />
+            </StackPanel>
+
+            <TextBlock Text="Action" Style="{StaticResource Sample.SectionTitle}" />
+            <Ant:Alert Type="Success" ShowIcon="True" Closable="True" Message="Success Tips">
+                <Ant:Alert.Action>
+                    <Ant:Button Content="UNDO" Size="Small" />
+                </Ant:Alert.Action>
+            </Ant:Alert>
+            <Ant:Alert Type="Error" ShowIcon="True" Message="Error Text" Description="Error Description Error Description">
+                <Ant:Alert.Action>
+                    <Ant:Button Content="Detail" Size="Small" Type="Danger" />
+                </Ant:Alert.Action>
+            </Ant:Alert>
+
+            <TextBlock Text="Banner" Style="{StaticResource Sample.SectionTitle}" />
+            <Ant:Alert Banner="True" Message="Warning text" />
+            <Ant:Alert Banner="True" Closable="True" Message="Very long warning text warning text text text text text text text text text text text text text text text text text text text text text text text" />
+            <Ant:Alert Banner="True" ShowIcon="False" Message="Warning text without icon" />
+            <Ant:Alert Banner="True" Type="Error" Message="Error text" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

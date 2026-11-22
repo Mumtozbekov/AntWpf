@@ -102,6 +102,14 @@
     <Thickness x:Key="BadgePadding">6 0</Thickness>
     <Thickness x:Key="BadgePaddingSmall">4 0</Thickness>
 
+    <!--  Alert  -->
+    <Thickness x:Key="AlertPadding">12 8</Thickness>
+    <Thickness x:Key="AlertPaddingWithDescription">24 20</Thickness>
+    <CornerRadius x:Key="AlertBorderRadius">8</CornerRadius>
+    <System:Double x:Key="AlertIconSize">14</System:Double>
+    <System:Double x:Key="AlertIconSizeWithDescription">24</System:Double>
+    <System:Double x:Key="AlertCloseIconSize">12</System:Double>
+
     <!--  Avatar  -->
     <System:Double x:Key="AvatarSizeSmall">24</System:Double>
     <System:Double x:Key="AvatarSizeBase">32</System:Double>

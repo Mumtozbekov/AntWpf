@@ -4,6 +4,7 @@
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Switch.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Tag.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Badge.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Alert.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/AntIcon.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
