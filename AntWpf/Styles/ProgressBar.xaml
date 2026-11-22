@@ -8,7 +8,7 @@
     <Style x:Key="Ant.ProgressBar" TargetType="{x:Type ProgressBar}">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BorderBrushSecondary}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ProgressBar.Border}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushBase}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Template">
@@ -87,7 +87,7 @@
 
 
                                 <Path Data="M16.3819 8.27342H15.2827C15.0436 8.27342 14.8163 8.38827 14.6757 8.58514L10.9913 13.6945L9.32252 11.3789C9.18189 11.1844 8.95689 11.0672 8.71549 11.0672H7.61626C7.46392 11.0672 7.37486 11.2406 7.46392 11.3648L10.3842 15.4148C10.4532 15.5111 10.5442 15.5896 10.6495 15.6437C10.7549 15.6978 10.8717 15.7261 10.9901 15.7261C11.1086 15.7261 11.2253 15.6978 11.3307 15.6437C11.436 15.5896 11.527 15.5111 11.596 15.4148L16.5319 8.57108C16.6233 8.44686 16.5343 8.27342 16.3819 8.27342Z"
-                                    Fill="White"  Height="6"  Stretch="Uniform"
+                                    Fill="{DynamicResource TextOnPrimaryBrush}"  Height="6"  Stretch="Uniform"
                                      
                                      StrokeThickness="30"/>
                         </Grid>

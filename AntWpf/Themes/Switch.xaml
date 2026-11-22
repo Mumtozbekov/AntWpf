@@ -113,7 +113,7 @@
                                                     Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}">
 
                                     <Border.Effect>
-                                        <DropShadowEffect  Direction="270" BlurRadius="4" ShadowDepth="1" Color="#005317" Opacity="0.2" />
+                                        <DropShadowEffect  Direction="270" BlurRadius="4" ShadowDepth="1" Color="{DynamicResource SwitchHandleShadowColor}" Opacity="0.2" />
                                     </Border.Effect>
                                     <Controls:Icon x:Name="Icon"
                                            Type="loading"

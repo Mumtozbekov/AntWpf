@@ -44,7 +44,7 @@
                                 Stroke="{DynamicResource PrimaryBrush}"
                                 StrokeThickness="0"/>
                         <Ellipse x:Name="Ellipse"
-                             Fill="White"
+                             Fill="{DynamicResource ElevatedBackgroundBrush}"
                              Cursor="Hand"
                              Stroke="{DynamicResource SliderBackgroundBrush}"
                             StrokeThickness="3">

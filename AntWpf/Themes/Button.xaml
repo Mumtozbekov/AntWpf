@@ -134,8 +134,8 @@
         <Style.Triggers>
             <!--  Ghost State  -->
             <Trigger Property="Ghost" Value="True">
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="Foreground" Value="{DynamicResource TextOnPrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource TextOnPrimaryBrush}" />
                 <Setter Property="Background" Value="Transparent" />
             </Trigger>
             <!--  Primary  -->

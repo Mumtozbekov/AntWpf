@@ -50,7 +50,7 @@
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                 CornerRadius="{TemplateBinding Controls:Control.CornerRadius}" />
                         <Path x:Name="CheckedMark"
-                                Fill="White"
+                                Fill="{DynamicResource TextOnPrimaryBrush}"
                                 Width="7"
                                 Height="11"
                                 Opacity="0"

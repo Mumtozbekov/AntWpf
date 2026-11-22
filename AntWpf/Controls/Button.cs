@@ -276,11 +276,11 @@
                 if (focused)
                 {
                     foreground = color;
-                    background = Colors.White;
+                    background = FindColor(button, "ContainerBackgroundColor", Colors.White);
                 }
                 else
                 {
-                    foreground = Colors.White;
+                    foreground = FindColor(button, "TextOnPrimaryColor", Colors.White);
                     background = color;
                 }
 
@@ -291,6 +291,14 @@
             children.Add(CreateBorderAnimation(PART_Border, color, IsShape, duration));
 
             return storyboard;
+        }
+
+        /// <summary>
+        /// Looks up a theme <see cref="Color"/> resource, falling back when it is not available.
+        /// </summary>
+        private static Color FindColor(FrameworkElement element, string key, Color fallback)
+        {
+            return element.TryFindResource(key) is Color color ? color : fallback;
         }
 
         private static Timeline CreateForegroundAnimation(DependencyObject target, Color color, Duration? duration = null)

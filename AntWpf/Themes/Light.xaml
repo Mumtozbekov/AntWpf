@@ -30,6 +30,10 @@
     <Color x:Key="DisabledColor">#3F000000</Color>
     <Color x:Key="DisabledBackground">#F5F5F5</Color>
     <Color x:Key="DisabledColorDark">#59FFFFFF</Color>
+    <Color x:Key="ContainerBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="ElevatedBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="TextOnPrimaryColor">#FFFFFF</Color>
+    <Color x:Key="SwitchHandleShadowColor">#005317</Color>
 
     <!--  Color Brushs  -->
     <SolidColorBrush
@@ -64,6 +68,18 @@
         x:Key="NormalBrush"
         Options:Freeze="True"
         Color="{StaticResource NormalColor}" />
+    <SolidColorBrush
+        x:Key="ContainerBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="ElevatedBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ElevatedBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="TextOnPrimaryBrush"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
 
     <!-- Background color for `<Window>` -->
     <SolidColorBrush
@@ -75,7 +91,7 @@
     <SolidColorBrush
         x:Key="ComponentBackground"
         Options:Freeze="True"
-        Color="#fff" />
+        Color="{StaticResource ContainerBackgroundColor}" />
     <SolidColorBrush x:Key="HeadingBrush" Color="{StaticResource HeadingColor}" />
     <SolidColorBrush
         x:Key="TextBrush"
@@ -154,7 +170,7 @@
     <SolidColorBrush
         x:Key="WindowTilteBarForeground"
         Options:Freeze="True"
-        Color="White" />
+        Color="{StaticResource TextOnPrimaryColor}" />
     <SolidColorBrush
         x:Key="WindowTilteBarBackground"
         Options:Freeze="True"
@@ -172,7 +188,7 @@
     <SolidColorBrush
         x:Key="ButtonPrimaryForeground"
         Options:Freeze="True"
-        Color="White" />
+        Color="{StaticResource TextOnPrimaryColor}" />
     <SolidColorBrush
         x:Key="ButtonPrimaryBackground"
         Options:Freeze="True"
@@ -184,7 +200,7 @@
     <SolidColorBrush
         x:Key="ButtonDefaultBackground"
         Options:Freeze="True"
-        Color="White" />
+        Color="{StaticResource ContainerBackgroundColor}" />
     <SolidColorBrush
         x:Key="ButtonDefaultBorder"
         Options:Freeze="True"
@@ -230,7 +246,7 @@
     <SolidColorBrush
         x:Key="RadioButtonBackground"
         Options:Freeze="True"
-        Color="White" />
+        Color="{StaticResource ContainerBackgroundColor}" />
 
     <!--  Input  -->
     <SolidColorBrush
@@ -248,7 +264,7 @@
     <SolidColorBrush
         x:Key="InputBackground"
         Options:Freeze="True"
-        Color="White" />
+        Color="{StaticResource ContainerBackgroundColor}" />
     <SolidColorBrush
         x:Key="InputMouseOverBorderBrush"
         Options:Freeze="True"
@@ -262,7 +278,7 @@
     <SolidColorBrush
         x:Key="ToolTipForeground"
         Options:Freeze="True"
-        Color="White" />
+        Color="{StaticResource TextOnPrimaryColor}" />
     <SolidColorBrush
         x:Key="ToolTipBackground"
         Options:Freeze="True"
@@ -286,7 +302,7 @@
     <SolidColorBrush
         x:Key="AvatarForeground"
         Options:Freeze="True"
-        Color="White" />
+        Color="{StaticResource TextOnPrimaryColor}" />
 
     <!--  Switch  -->
     <SolidColorBrush
