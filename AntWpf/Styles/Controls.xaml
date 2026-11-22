@@ -18,4 +18,8 @@
     <Style BasedOn="{StaticResource Ant.TextBox}" TargetType="TextBox" />
     <Style BasedOn="{StaticResource Ant.PasswordBox}" TargetType="PasswordBox" />
     <Style BasedOn="{StaticResource Ant.CheckBox}" TargetType="CheckBox" />
+    <Style BasedOn="{StaticResource Ant.ComboBox}" TargetType="ComboBox" />
+    <Style BasedOn="{StaticResource Ant.RadioButton}" TargetType="RadioButton" />
+    <Style BasedOn="{StaticResource Ant.Slider}" TargetType="Slider" />
+    <Style BasedOn="{StaticResource Ant.ProgressBar}" TargetType="ProgressBar" />
 </ResourceDictionary>

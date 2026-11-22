@@ -249,7 +249,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style TargetType="{x:Type Slider}">
+    <Style x:Key="Ant.Slider" TargetType="{x:Type Slider}">
         <Setter Property="SnapsToDevicePixels"
           Value="true" />
         <Setter Property="OverridesDefaultStyle"

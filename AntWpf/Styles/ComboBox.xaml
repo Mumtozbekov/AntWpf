@@ -66,7 +66,7 @@
         </Setter>
     </Style>
 
-    <Style  BasedOn="{StaticResource Ant.Input}" TargetType="{x:Type ComboBox}">
+    <Style x:Key="Ant.ComboBox" BasedOn="{StaticResource Ant.Input}" TargetType="{x:Type ComboBox}">
         <Setter Property="MaxDropDownHeight" Value="250" />
         <Setter Property="Template">
             <Setter.Value>
