@@ -20,6 +20,7 @@
                 <ListBoxItem Content="Tag" Tag="Tag" />
                 <ListBoxItem Content="Badge" Tag="Badge" />
                 <ListBoxItem Content="Alert" Tag="Alert" />
+                <ListBoxItem Content="Tabs" Tag="Tabs" />
             </ListBox>
         </Border>
         <ContentControl x:Name="page" Focusable="False" />

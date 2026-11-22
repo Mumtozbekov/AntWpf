@@ -110,6 +110,27 @@
     <System:Double x:Key="AlertIconSizeWithDescription">24</System:Double>
     <System:Double x:Key="AlertCloseIconSize">12</System:Double>
 
+    <!--  Tabs  -->
+    <Thickness x:Key="TabsItemPadding">0 12</Thickness>
+    <Thickness x:Key="TabsItemPaddingSmall">0 8</Thickness>
+    <Thickness x:Key="TabsItemPaddingLarge">0 16</Thickness>
+    <Thickness x:Key="TabsItemMargin">0,0,32,0</Thickness>
+    <Thickness x:Key="TabsVerticalItemPadding">24 8</Thickness>
+    <Thickness x:Key="TabsVerticalItemMargin">0,0,0,16</Thickness>
+    <Thickness x:Key="TabsCardPadding">16 8</Thickness>
+    <Thickness x:Key="TabsCardPaddingSmall">16 6</Thickness>
+    <Thickness x:Key="TabsCardItemMargin">0,0,2,0</Thickness>
+    <Thickness x:Key="TabsCardVerticalItemMargin">0,0,0,2</Thickness>
+    <CornerRadius x:Key="TabsCardRadiusTop">8,8,0,0</CornerRadius>
+    <CornerRadius x:Key="TabsCardRadiusBottom">0,0,8,8</CornerRadius>
+    <CornerRadius x:Key="TabsCardRadiusLeft">8,0,0,8</CornerRadius>
+    <CornerRadius x:Key="TabsCardRadiusRight">0,8,8,0</CornerRadius>
+    <System:Double x:Key="TabsInkBarSize">2</System:Double>
+    <Thickness x:Key="TabsBarMarginTop">0,0,0,16</Thickness>
+    <Thickness x:Key="TabsBarMarginBottom">0,16,0,0</Thickness>
+    <Thickness x:Key="TabsBarMarginLeft">0,0,24,0</Thickness>
+    <Thickness x:Key="TabsBarMarginRight">24,0,0,0</Thickness>
+
     <!--  Avatar  -->
     <System:Double x:Key="AvatarSizeSmall">24</System:Double>
     <System:Double x:Key="AvatarSizeBase">32</System:Double>

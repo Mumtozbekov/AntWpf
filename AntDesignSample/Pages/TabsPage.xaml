@@ -1,0 +1,55 @@
+<UserControl x:Class="AntDesignSample.Pages.TabsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24" MaxWidth="760" HorizontalAlignment="Left">
+
+            <TextBlock Text="Basic" Style="{StaticResource Sample.SectionTitle}" />
+            <TabControl>
+                <TabItem Header="Tab 1"><TextBlock Text="Content of Tab Pane 1" /></TabItem>
+                <TabItem Header="Tab 2"><TextBlock Text="Content of Tab Pane 2" /></TabItem>
+                <TabItem Header="Tab 3 (long title)"><TextBlock Text="Content of Tab Pane 3" /></TabItem>
+                <TabItem Header="Disabled" IsEnabled="False" />
+            </TabControl>
+
+            <TextBlock Text="Centered" Style="{StaticResource Sample.SectionTitle}" />
+            <TabControl Ant:Tabs.Centered="True">
+                <TabItem Header="Tab 1"><TextBlock Text="Content of Tab Pane 1" /></TabItem>
+                <TabItem Header="Tab 2"><TextBlock Text="Content of Tab Pane 2" /></TabItem>
+                <TabItem Header="Tab 3"><TextBlock Text="Content of Tab Pane 3" /></TabItem>
+            </TabControl>
+
+            <TextBlock Text="Position and size" Style="{StaticResource Sample.SectionTitle}" />
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                <RadioButton GroupName="placement" Content="Top" IsChecked="True" Checked="Placement_Checked" />
+                <RadioButton GroupName="placement" Content="Bottom" Checked="Placement_Checked" />
+                <RadioButton GroupName="placement" Content="Left" Checked="Placement_Checked" />
+                <RadioButton GroupName="placement" Content="Right" Checked="Placement_Checked" Margin="0,0,24,0" />
+                <RadioButton GroupName="size" Content="Small" Checked="Size_Checked" />
+                <RadioButton GroupName="size" Content="Default" IsChecked="True" Checked="Size_Checked" />
+                <RadioButton GroupName="size" Content="Large" Checked="Size_Checked" />
+            </StackPanel>
+            <TabControl x:Name="positionTabs" Height="220">
+                <TabItem Header="Tab 1"><TextBlock Text="Content of Tab 1" /></TabItem>
+                <TabItem Header="Tab 2"><TextBlock Text="Content of Tab 2" /></TabItem>
+                <TabItem Header="Tab 3"><TextBlock Text="Content of Tab 3" /></TabItem>
+            </TabControl>
+
+            <TextBlock Text="Card" Style="{StaticResource Sample.SectionTitle}" />
+            <TabControl Ant:Tabs.Type="Card">
+                <TabItem Header="Tab 1"><TextBlock Text="Content of Tab Pane 1" /></TabItem>
+                <TabItem Header="Tab 2"><TextBlock Text="Content of Tab Pane 2" /></TabItem>
+                <TabItem Header="Tab 3"><TextBlock Text="Content of Tab Pane 3" /></TabItem>
+            </TabControl>
+
+            <TextBlock Text="Closable card (CloseRequested)" Style="{StaticResource Sample.SectionTitle}" />
+            <Ant:Button Content="Add tab" HorizontalAlignment="Left" Margin="0,0,0,12" Click="AddTab_Click" />
+            <TabControl x:Name="editableTabs" Ant:Tabs.Type="Card" Ant:Tabs.Closable="True" Ant:Tabs.CloseRequested="EditableTabs_CloseRequested">
+                <TabItem Header="Tab 1"><TextBlock Text="Content of Tab 1" /></TabItem>
+                <TabItem Header="Tab 2"><TextBlock Text="Content of Tab 2" /></TabItem>
+                <TabItem Header="Not closable" Ant:Tabs.Closable="False"><TextBlock Text="This tab has no close button" /></TabItem>
+            </TabControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

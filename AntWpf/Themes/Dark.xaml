@@ -367,6 +367,12 @@
         Options:Freeze="True"
         Color="{StaticResource DisabledColor}" />
 
+    <!--  Tabs (v5 colorFillAlter)  -->
+    <SolidColorBrush
+        x:Key="TabsCardBackground"
+        Options:Freeze="True"
+        Color="#0AFFFFFF" />
+
     <!--  Avatar  -->
     <SolidColorBrush
         x:Key="AvatarBackground"

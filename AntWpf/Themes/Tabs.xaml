@@ -1,0 +1,308 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:AntWpf.Controls">
+
+    <!--  Tabs (TabControl)  -->
+    <Style x:Key="Ant.Tabs" TargetType="{x:Type TabControl}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBase}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <Grid
+                        x:Name="Root"
+                        Background="{TemplateBinding Background}"
+                        KeyboardNavigation.TabNavigation="Local"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="Column0" Width="*" />
+                            <ColumnDefinition x:Name="Column1" Width="0" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="Row0" Height="Auto" />
+                            <RowDefinition x:Name="Row1" Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--  Tab bar: baseline, headers and ink bar  -->
+                        <Grid
+                            x:Name="HeaderArea"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="{DynamicResource TabsBarMarginTop}"
+                            Panel.ZIndex="1">
+                            <Border
+                                x:Name="HeaderLine"
+                                BorderBrush="{DynamicResource BorderBrushSecondary}"
+                                BorderThickness="0,0,0,1" />
+                            <StackPanel
+                                x:Name="HeaderPanel"
+                                HorizontalAlignment="Left"
+                                Background="Transparent"
+                                IsItemsHost="True"
+                                KeyboardNavigation.TabIndex="1"
+                                Orientation="Horizontal" />
+                            <Canvas x:Name="InkBarHost" IsHitTestVisible="False">
+                                <Rectangle
+                                    x:Name="PART_InkBar"
+                                    Fill="{DynamicResource PrimaryBrush}"
+                                    Visibility="Hidden" />
+                            </Canvas>
+                        </Grid>
+
+                        <ContentPresenter
+                            x:Name="PART_SelectedContentHost"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="{TemplateBinding Padding}"
+                            ContentSource="SelectedContent"
+                            KeyboardNavigation.TabIndex="2"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Controls:Tabs.Centered" Value="True">
+                            <Setter TargetName="HeaderPanel" Property="HorizontalAlignment" Value="Center" />
+                        </Trigger>
+                        <Trigger Property="Controls:Tabs.Type" Value="Card">
+                            <Setter TargetName="InkBarHost" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <!--  Placement  -->
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="Auto" />
+                            <Setter TargetName="HeaderArea" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="HeaderArea" Property="Margin" Value="{DynamicResource TabsBarMarginBottom}" />
+                            <Setter TargetName="HeaderLine" Property="BorderThickness" Value="0,1,0,0" />
+                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter TargetName="Column0" Property="Width" Value="Auto" />
+                            <Setter TargetName="Column1" Property="Width" Value="*" />
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="0" />
+                            <Setter TargetName="HeaderArea" Property="Margin" Value="{DynamicResource TabsBarMarginLeft}" />
+                            <Setter TargetName="HeaderLine" Property="BorderThickness" Value="0,0,1,0" />
+                            <Setter TargetName="HeaderPanel" Property="Orientation" Value="Vertical" />
+                            <Setter TargetName="HeaderPanel" Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter TargetName="HeaderPanel" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Column" Value="1" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter TargetName="Column0" Property="Width" Value="*" />
+                            <Setter TargetName="Column1" Property="Width" Value="Auto" />
+                            <Setter TargetName="Row0" Property="Height" Value="*" />
+                            <Setter TargetName="Row1" Property="Height" Value="0" />
+                            <Setter TargetName="HeaderArea" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="HeaderArea" Property="Margin" Value="{DynamicResource TabsBarMarginRight}" />
+                            <Setter TargetName="HeaderLine" Property="BorderThickness" Value="1,0,0,0" />
+                            <Setter TargetName="HeaderPanel" Property="Orientation" Value="Vertical" />
+                            <Setter TargetName="HeaderPanel" Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter TargetName="HeaderPanel" Property="VerticalAlignment" Value="Top" />
+                            <Setter TargetName="PART_SelectedContentHost" Property="Grid.Row" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Close button of a card tab  -->
+    <Style x:Key="Ant.TabItemCloseButton" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="8,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Command" Value="{x:Static Controls:Tabs.CloseTabCommand}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Controls:AntIcon
+                        x:Name="Icon"
+                        Width="12"
+                        Height="12"
+                        Background="Transparent"
+                        Foreground="{DynamicResource IconBrush}"
+                        Key="CloseOutlined" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource IconHoverBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  TabItem  -->
+    <Style x:Key="Ant.TabItem" TargetType="{x:Type TabItem}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
+        <!--  Constant: the tab content inherits it. State colors are applied to the header only.  -->
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="{DynamicResource TabsItemPadding}" />
+        <Setter Property="Margin" Value="{DynamicResource TabsItemMargin}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Border
+                        x:Name="Border"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding Controls:Control.CornerRadius}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <!--  Header text style lives here, not on the TabItem: the tab content inherits from the TabItem  -->
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                            <ContentPresenter
+                                x:Name="HeaderPresenter"
+                                VerticalAlignment="Center"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                TextElement.FontSize="{DynamicResource FontSizeBase}"
+                                TextElement.Foreground="{DynamicResource TextBrush}" />
+                            <Button
+                                x:Name="CloseButton"
+                                Style="{StaticResource Ant.TabItemCloseButton}"
+                                Visibility="Collapsed" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Controls:Tabs.Size" Value="Large">
+                            <Setter TargetName="HeaderPresenter" Property="TextElement.FontSize" Value="{DynamicResource FontSizeLarge}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="HeaderPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryHoverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="HeaderPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="HeaderPresenter" Property="TextElement.Foreground" Value="{DynamicResource DisabledBrush}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Controls:Tabs.Type" Value="Card" />
+                                <Condition Property="Controls:Tabs.Closable" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="CloseButton" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!--  Size  -->
+            <Trigger Property="Controls:Tabs.Size" Value="Small">
+                <Setter Property="Padding" Value="{DynamicResource TabsItemPaddingSmall}" />
+            </Trigger>
+            <Trigger Property="Controls:Tabs.Size" Value="Large">
+                <Setter Property="Padding" Value="{DynamicResource TabsItemPaddingLarge}" />
+            </Trigger>
+            <!--  Vertical line tabs  -->
+            <Trigger Property="TabStripPlacement" Value="Left">
+                <Setter Property="Padding" Value="{DynamicResource TabsVerticalItemPadding}" />
+                <Setter Property="Margin" Value="{DynamicResource TabsVerticalItemMargin}" />
+            </Trigger>
+            <Trigger Property="TabStripPlacement" Value="Right">
+                <Setter Property="Padding" Value="{DynamicResource TabsVerticalItemPadding}" />
+                <Setter Property="Margin" Value="{DynamicResource TabsVerticalItemMargin}" />
+            </Trigger>
+            <!--  Card  -->
+            <Trigger Property="Controls:Tabs.Type" Value="Card">
+                <Setter Property="Background" Value="{DynamicResource TabsCardBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushSecondary}" />
+                <Setter Property="BorderThickness" Value="{DynamicResource BorderThicknessBase}" />
+                <Setter Property="Padding" Value="{DynamicResource TabsCardPadding}" />
+                <Setter Property="Margin" Value="{DynamicResource TabsCardItemMargin}" />
+                <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource TabsCardRadiusTop}" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="Controls:Tabs.Size" Value="Small" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Padding" Value="{DynamicResource TabsCardPaddingSmall}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="TabStripPlacement" Value="Bottom" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource TabsCardRadiusBottom}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="TabStripPlacement" Value="Left" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Margin" Value="{DynamicResource TabsCardVerticalItemMargin}" />
+                <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource TabsCardRadiusLeft}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="TabStripPlacement" Value="Right" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Margin" Value="{DynamicResource TabsCardVerticalItemMargin}" />
+                <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource TabsCardRadiusRight}" />
+            </MultiTrigger>
+            <!--  States  -->
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Panel.ZIndex" Value="1" />
+            </Trigger>
+            <!--  Selected card merges with the content: container background, no border on the content side  -->
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="IsSelected" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource ContainerBackgroundBrush}" />
+                <Setter Property="BorderThickness" Value="1,1,1,0" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="TabStripPlacement" Value="Bottom" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderThickness" Value="1,0,1,1" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="TabStripPlacement" Value="Left" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderThickness" Value="1,1,0,1" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Controls:Tabs.Type" Value="Card" />
+                    <Condition Property="IsSelected" Value="True" />
+                    <Condition Property="TabStripPlacement" Value="Right" />
+                </MultiTrigger.Conditions>
+                <Setter Property="BorderThickness" Value="0,1,1,1" />
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Cursor" Value="Arrow" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
