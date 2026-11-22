@@ -1,0 +1,60 @@
+<UserControl x:Class="AntDesignSample.Pages.TagPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+
+            <TextBlock Text="Basic" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Tag Content="Tag 1" />
+                <Ant:Tag Content="Link" Cursor="Hand" />
+                <Ant:Tag Content="Prevent default" Closable="True" Closing="PreventClose_Closing" />
+                <Ant:Tag Content="Closable tag" Closable="True" Closed="Tag_Closed" />
+            </WrapPanel>
+
+            <TextBlock Text="Status" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Tag Color="Success" Content="success" />
+                <Ant:Tag Color="Processing" Content="processing" />
+                <Ant:Tag Color="Error" Content="error" />
+                <Ant:Tag Color="Warning" Content="warning" />
+                <Ant:Tag Color="Default" Content="default" />
+            </WrapPanel>
+
+            <TextBlock Text="Icon" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Tag Color="Success" Icon="CheckOutlined" Content="success" />
+                <Ant:Tag Color="Processing" Icon="SyncOutlined" Content="processing" />
+                <Ant:Tag Color="Error" Icon="CloseOutlined" Content="error" />
+                <Ant:Tag Color="Warning" Icon="WarningOutlined" Content="warning" />
+                <Ant:Tag Color="Default" Icon="HistoryOutlined" Content="waiting" />
+            </WrapPanel>
+
+            <TextBlock Text="Custom color" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Tag Color="#F50" Content="#f50" />
+                <Ant:Tag Color="#2DB7F5" Content="#2db7f5" />
+                <Ant:Tag Color="#87D068" Content="#87d068" />
+                <Ant:Tag Color="#108EE9" Content="#108ee9" Closable="True" />
+            </WrapPanel>
+
+            <TextBlock Text="Borderless" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Tag Bordered="False" Content="Tag 1" />
+                <Ant:Tag Bordered="False" Color="Success" Content="success" />
+                <Ant:Tag Bordered="False" Color="Error" Content="error" Closable="True" />
+            </WrapPanel>
+
+            <TextBlock Text="CheckableTag" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:CheckableTag Content="Movies" IsChecked="True" />
+                <Ant:CheckableTag Content="Books" />
+                <Ant:CheckableTag Content="Music" />
+                <Ant:CheckableTag Content="Sports" IsEnabled="False" />
+            </WrapPanel>
+
+            <TextBlock x:Name="eventLog" Margin="0,16,0,0" Foreground="{DynamicResource TextSecondaryBrush}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

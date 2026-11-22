@@ -85,6 +85,11 @@
     <!--  Tag  -->
     <!--  @FontSizeSmall  -->
     <System:Double x:Key="TagFontSize">12</System:Double>
+    <System:Double x:Key="TagHeight">22</System:Double>
+    <Thickness x:Key="TagPadding">7 0</Thickness>
+    <CornerRadius x:Key="TagBorderRadius">4</CornerRadius>
+    <System:Double x:Key="TagIconSize">12</System:Double>
+    <System:Double x:Key="TagCloseIconSize">10</System:Double>
 
     <!--  Badge  -->
     <System:Double x:Key="BadgeHeight">20</System:Double>

@@ -43,7 +43,7 @@ namespace AntWpf.Converters
                         return Binding.DoNothing;
                 }
             }
-            catch (FormatException)
+            catch (Exception e) when (e is FormatException || e is InvalidCastException)
             {
                 return Binding.DoNothing;
             }
@@ -86,7 +86,7 @@ namespace AntWpf.Converters
                         return Binding.DoNothing;
                 }
             }
-            catch (FormatException)
+            catch (Exception e) when (e is FormatException || e is InvalidCastException)
             {
                 return Binding.DoNothing;
             }

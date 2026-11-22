@@ -1,0 +1,59 @@
+<UserControl x:Class="AntDesignSample.Pages.GeneralPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+
+            <TextBlock Text="Button" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel Orientation="Horizontal">
+                <Ant:Button Type="Primary" Margin="0,0,10,10" Content="Button1"/>
+                <Ant:Button Type="Primary" Shape="Circle" Icon="search" Margin="0,0,10,10" />
+                <Ant:Button Type="Dashed" Margin="0,0,10,10" Content="Button2"/>
+                <Ant:Button Type="Danger" Margin="0,0,10,10" Content="Button3"/>
+                <Ant:Button Type="Primary" Margin="0,0,10,10" Loading="True" Content="Loading"/>
+                <Ant:Button Type="Primary" Shape="Circle" Margin="0,0,10,10" Loading="True" />
+            </WrapPanel>
+
+            <TextBlock Text="Input" Style="{StaticResource Sample.SectionTitle}" />
+            <StackPanel MaxWidth="400" HorizontalAlignment="Left" MinWidth="300">
+                <TextBox Ant:Input.Placeholder="Place holder" Margin="0,0,0,10"/>
+                <PasswordBox Ant:Input.Placeholder="PassworBox" Ant:Input.Eyeable="True"/>
+                <ComboBox Margin="0,10" >
+                    <ComboBoxItem Content="Itemm 1"/>
+                    <ComboBoxItem Content="Itemm 3"/>
+                    <ComboBoxItem Content="Itemm 4"/>
+                </ComboBox>
+            </StackPanel>
+
+            <TextBlock Text="CheckBox, Switch, Radio" Style="{StaticResource Sample.SectionTitle}" />
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Margin="0,0,10,0" Content="Checked" IsChecked="True"/>
+                <CheckBox Margin="0,0,10,0" Content="UnChecked"/>
+                <CheckBox Margin="0,0,10,0" Content="Disabled" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,12">
+                <Ant:Switch Margin="0,0,10,0" UnCheckedContent="0" Content="1" IsChecked="True"/>
+                <Ant:Switch Margin="0,0,10,0" UnCheckedContent="UnChecked" IsChecked="True" Content="Checked"/>
+                <Ant:Switch Margin="0,0,10,0" IsEnabled="False"/>
+                <Ant:Switch Margin="0,0,10,0" IsChecked="True" Loading="True"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Margin="0,0,10,0" GroupName="0" Content="Checked" IsChecked="True"/>
+                <RadioButton Margin="0,0,10,0" GroupName="0" Content="UnChecked" />
+                <RadioButton Margin="0,0,10,0" GroupName="0" Content="Disabled" IsEnabled="False" />
+            </StackPanel>
+
+            <TextBlock Text="Progress, Slider" Style="{StaticResource Sample.SectionTitle}" />
+            <StackPanel HorizontalAlignment="Left" Width="300">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}" Margin="12,0" Maximum="100" BorderThickness="8" Minimum="0"  Width="67" Style="{StaticResource Ant.CircularProgressBar}"/>
+                    <ProgressBar  Value="100"  Margin="12,0" Maximum="100" BorderThickness="8" Minimum="0"  Width="67" Style="{StaticResource Ant.CircularProgressBar}"/>
+                </StackPanel>
+                <ProgressBar Ant:ProgressAssist.SmoothValue="{Binding ElementName=sld, Path=Value}" Margin="0,24,0,12" Maximum="100" IsIndeterminate="False" Minimum="0" />
+                <ProgressBar Value="100" Maximum="100" IsIndeterminate="False" Minimum="0" />
+                <Slider x:Name="sld" Value="33" Minimum="0" Maximum="100" SmallChange="1" Margin="0,24" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

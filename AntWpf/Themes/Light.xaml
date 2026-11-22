@@ -34,6 +34,16 @@
     <Color x:Key="ElevatedBackgroundColor">#FFFFFF</Color>
     <Color x:Key="TextOnPrimaryColor">#FFFFFF</Color>
     <Color x:Key="SwitchHandleShadowColor">#005317</Color>
+    <Color x:Key="SuccessBackgroundColor">#F6FFED</Color>
+    <Color x:Key="SuccessBorderColor">#B7EB8F</Color>
+    <Color x:Key="InfoBackgroundColor">#E6F4FF</Color>
+    <Color x:Key="InfoBorderColor">#91CAFF</Color>
+    <Color x:Key="WarningBackgroundColor">#FFFBE6</Color>
+    <Color x:Key="WarningBorderColor">#FFE58F</Color>
+    <Color x:Key="ErrorBackgroundColor">#FFF2F0</Color>
+    <Color x:Key="ErrorBorderColor">#FFCCC7</Color>
+    <Color x:Key="PrimaryHoverColor">#4096FF</Color>
+    <Color x:Key="PrimaryActiveColor">#0958D9</Color>
 
     <!--  Color Brushs  -->
     <SolidColorBrush
@@ -80,6 +90,46 @@
         x:Key="TextOnPrimaryBrush"
         Options:Freeze="True"
         Color="{StaticResource TextOnPrimaryColor}" />
+    <SolidColorBrush
+        x:Key="SuccessBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource SuccessBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="SuccessBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource SuccessBorderColor}" />
+    <SolidColorBrush
+        x:Key="InfoBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource InfoBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="InfoBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource InfoBorderColor}" />
+    <SolidColorBrush
+        x:Key="WarningBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource WarningBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="WarningBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource WarningBorderColor}" />
+    <SolidColorBrush
+        x:Key="ErrorBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="ErrorBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorBorderColor}" />
+    <SolidColorBrush
+        x:Key="PrimaryHoverBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryHoverColor}" />
+    <SolidColorBrush
+        x:Key="PrimaryActiveBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryActiveColor}" />
 
     <!-- Background color for `<Window>` -->
     <SolidColorBrush
@@ -288,11 +338,15 @@
     <SolidColorBrush
         x:Key="TagDefaultBackground"
         Options:Freeze="True"
-        Color="{StaticResource BackgroundColorLight}" />
+        Color="#05000000" />
     <SolidColorBrush
         x:Key="TagDefaultForeground"
         Options:Freeze="True"
         Color="{StaticResource TextColor}" />
+    <SolidColorBrush
+        x:Key="TagDefaultBorder"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorBase}" />
 
     <!--  Avatar  -->
     <SolidColorBrush
