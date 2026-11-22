@@ -6,7 +6,13 @@
         xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf"
         mc:Ignorable="d"
         d:Height="600"
-        Title="MainWindow" MinHeight="450"  MinWidth="450" Width="800">
+        Title="MainWindow" MinHeight="450"  MinWidth="450" Width="800"
+        Background="{DynamicResource BodyBackground}"
+        Foreground="{DynamicResource TextBrush}">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Padding="10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BorderBrushSecondary}">
+            <Ant:Button x:Name="themeButton" HorizontalAlignment="Right" Content="Dark" Click="ThemeButton_Click"/>
+        </Border>
     <ScrollViewer>
 
         <Grid >
@@ -63,7 +69,8 @@
                 </Grid.RowDefinitions>
                 <TextBox Ant:Input.Placeholder="Icon key" Margin="10,5" Name="iconSearchBox" TextChanged="iconSearchBox_TextChanged"/>
 
-                <ListBox Grid.Row="1" Margin="10,10" MaxHeight="450" MinHeight="200"  Name="iconsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox Grid.Row="1" Margin="10,10" MaxHeight="450" MinHeight="200"  Name="iconsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         Background="{DynamicResource ComponentBackground}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource BorderBrushBase}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel >
@@ -93,4 +100,5 @@
 
         </Grid>
     </ScrollViewer>
+    </DockPanel>
 </Window>

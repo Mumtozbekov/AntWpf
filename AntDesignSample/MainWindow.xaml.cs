@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using AntWpf;
 using AntWpf.Controls;
 
 namespace AntDesignSample
@@ -40,6 +41,12 @@ namespace AntDesignSample
             iconsList.ItemsSource = iconsCollection;
         }
 
+
+        private void ThemeButton_Click(object sender, RoutedEventArgs e)
+        {
+            ThemeManager.SetTheme(ThemeManager.Current == AntTheme.Light ? AntTheme.Dark : AntTheme.Light);
+            themeButton.Content = ThemeManager.Current == AntTheme.Light ? "Dark" : "Light";
+        }
 
         private void iconSearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
