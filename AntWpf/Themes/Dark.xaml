@@ -374,6 +374,16 @@
         Options:Freeze="True"
         Color="#0AFFFFFF" />
 
+    <!--  Modal (v5 colorBgMask) and text button hover (v5 colorBgTextHover)  -->
+    <SolidColorBrush
+        x:Key="ModalMaskBrush"
+        Options:Freeze="True"
+        Color="#73000000" />
+    <SolidColorBrush
+        x:Key="TextHoverBackgroundBrush"
+        Options:Freeze="True"
+        Color="#1FFFFFFF" />
+
     <!--  Avatar  -->
     <SolidColorBrush
         x:Key="AvatarBackground"

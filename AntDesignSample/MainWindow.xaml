@@ -22,6 +22,7 @@
                 <ListBoxItem Content="Alert" Tag="Alert" />
                 <ListBoxItem Content="Tabs" Tag="Tabs" />
                 <ListBoxItem Content="Message" Tag="Message" />
+                <ListBoxItem Content="Modal" Tag="Modal" />
             </ListBox>
         </Border>
         <ContentControl x:Name="page" Focusable="False" />

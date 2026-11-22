@@ -137,6 +137,16 @@
     <System:Double x:Key="MessageIconSize">16</System:Double>
     <Thickness x:Key="MessageItemMargin">0,0,0,8</Thickness>
 
+    <!--  Modal  -->
+    <System:Double x:Key="ModalWidth">520</System:Double>
+    <System:Double x:Key="ModalConfirmWidth">416</System:Double>
+    <Thickness x:Key="ModalMargin">16,100,16,24</Thickness>
+    <Thickness x:Key="ModalPadding">24 20</Thickness>
+    <CornerRadius x:Key="ModalBorderRadius">8</CornerRadius>
+    <System:Double x:Key="ModalTitleFontSize">16</System:Double>
+    <System:Double x:Key="ModalConfirmIconSize">22</System:Double>
+    <System:Double x:Key="ModalCloseSize">22</System:Double>
+
     <!--  Avatar  -->
     <System:Double x:Key="AvatarSizeSmall">24</System:Double>
     <System:Double x:Key="AvatarSizeBase">32</System:Double>
