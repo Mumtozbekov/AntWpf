@@ -1,0 +1,180 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:AntWpf.Controls"
+    xmlns:converters="clr-namespace:AntWpf.Converters"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <Style TargetType="{x:Type Controls:Alert}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBase}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource InfoBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InfoBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource BorderThicknessBase}" />
+        <Setter Property="Padding" Value="{DynamicResource AlertPaddingWithDescription}" />
+        <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource AlertBorderRadius}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:Alert}">
+                    <Border
+                        x:Name="Border"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding Controls:Control.CornerRadius}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!--  Icon  -->
+                                <ColumnDefinition Width="Auto" />
+                                <!--  Message and description  -->
+                                <ColumnDefinition Width="*" />
+                                <!--  Action  -->
+                                <ColumnDefinition Width="Auto" />
+                                <!--  Close  -->
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Controls:AntIcon
+                                x:Name="PART_Icon"
+                                Width="{DynamicResource AlertIconSizeWithDescription}"
+                                Height="{DynamicResource AlertIconSizeWithDescription}"
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Top"
+                                Foreground="{DynamicResource InfoBrush}"
+                                Visibility="Collapsed" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <StackPanel.Resources>
+                                    <!--  Text content wraps and uses the Ant Design line height (1.5714): 22px for 14px text  -->
+                                    <DataTemplate DataType="{x:Type sys:String}">
+                                        <TextBlock
+                                            LineHeight="{Binding FontSize, RelativeSource={RelativeSource Self}, Converter={converters:MathConverter Operation=Multiply}, ConverterParameter=1.5714}"
+                                            LineStackingStrategy="BlockLineHeight"
+                                            Text="{Binding}"
+                                            TextWrapping="Wrap" />
+                                    </DataTemplate>
+                                </StackPanel.Resources>
+                                <ContentPresenter
+                                    x:Name="MessagePresenter"
+                                    Margin="0,0,0,4"
+                                    Content="{TemplateBinding Message}"
+                                    TextElement.FontSize="{DynamicResource FontSizeLarge}"
+                                    TextElement.Foreground="{DynamicResource HeadingBrush}" />
+                                <ContentPresenter x:Name="DescriptionPresenter" Content="{TemplateBinding Description}" />
+                            </StackPanel>
+                            <ContentPresenter
+                                x:Name="ActionPresenter"
+                                Grid.Column="2"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Top"
+                                Content="{TemplateBinding Action}" />
+                            <Controls:AntIcon
+                                x:Name="PART_Close"
+                                Grid.Column="3"
+                                Width="{DynamicResource AlertCloseIconSize}"
+                                Height="{DynamicResource AlertCloseIconSize}"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Top"
+                                Background="Transparent"
+                                Cursor="Hand"
+                                Foreground="{DynamicResource IconBrush}"
+                                Key="CloseOutlined"
+                                Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!--  Without description: compact layout  -->
+                        <Trigger Property="Description" Value="{x:Null}">
+                            <Setter TargetName="PART_Icon" Property="Width" Value="{DynamicResource AlertIconSize}" />
+                            <Setter TargetName="PART_Icon" Property="Height" Value="{DynamicResource AlertIconSize}" />
+                            <Setter TargetName="PART_Icon" Property="Margin" Value="0,0,8,0" />
+                            <Setter TargetName="PART_Icon" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="MessagePresenter" Property="Margin" Value="0" />
+                            <Setter TargetName="MessagePresenter" Property="TextElement.FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="MessagePresenter" Property="TextElement.Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="DescriptionPresenter" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="ActionPresenter" Property="VerticalAlignment" Value="Center" />
+                            <Setter TargetName="PART_Close" Property="VerticalAlignment" Value="Center" />
+                        </Trigger>
+                        <!--  Message falls back to Content  -->
+                        <Trigger Property="Message" Value="{x:Null}">
+                            <Setter TargetName="MessagePresenter" Property="Content" Value="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="MessagePresenter" Property="ContentTemplate" Value="{Binding ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="Action" Value="{x:Null}">
+                            <Setter TargetName="ActionPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <!--  Icon visibility: ShowIcon, or a banner when ShowIcon is not set  -->
+                        <Trigger Property="ShowIcon" Value="True">
+                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ShowIcon" Value="{x:Null}" />
+                                <Condition Property="Banner" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <!--  Icon color  -->
+                        <Trigger Property="Type" Value="Success">
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource SuccessBrush}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Warning">
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource WarningBrush}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Error">
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource ErrorBrush}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Type" Value="{x:Null}" />
+                                <Condition Property="Banner" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource WarningBrush}" />
+                        </MultiTrigger>
+                        <!--  Close  -->
+                        <Trigger Property="Closable" Value="True">
+                            <Setter TargetName="PART_Close" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger SourceName="PART_Close" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Close" Property="Foreground" Value="{DynamicResource IconHoverBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Description" Value="{x:Null}">
+                <Setter Property="Padding" Value="{DynamicResource AlertPadding}" />
+            </Trigger>
+            <!--  Type colors (Info is the default)  -->
+            <Trigger Property="Type" Value="Success">
+                <Setter Property="Background" Value="{DynamicResource SuccessBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SuccessBorderBrush}" />
+            </Trigger>
+            <Trigger Property="Type" Value="Warning">
+                <Setter Property="Background" Value="{DynamicResource WarningBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WarningBorderBrush}" />
+            </Trigger>
+            <Trigger Property="Type" Value="Error">
+                <Setter Property="Background" Value="{DynamicResource ErrorBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ErrorBorderBrush}" />
+            </Trigger>
+            <!--  Banner: no border and radius, warning by default  -->
+            <Trigger Property="Banner" Value="True">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Controls:Control.CornerRadius" Value="0" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Type" Value="{x:Null}" />
+                    <Condition Property="Banner" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource WarningBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WarningBorderBrush}" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

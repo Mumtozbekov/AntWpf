@@ -6,7 +6,7 @@
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
-    <Style  BasedOn="{StaticResource Ant.Control}" TargetType="{x:Type RadioButton}">
+    <Style x:Key="Ant.RadioButton" BasedOn="{StaticResource Ant.Control}" TargetType="{x:Type RadioButton}">
         <Setter Property="Padding" Value="4 0 8 0" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />

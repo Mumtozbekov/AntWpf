@@ -1,0 +1,412 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="Options">
+
+    <!--  Dark theme colors (Ant Design v5 dark algorithm). Must define exactly the same keys as
+          Light.xaml. Brushes must stay frozen: state storyboards animate brush colors and rely
+          on WPF cloning frozen brushes per control.  -->
+
+    <!--  Colors  -->
+    <Color x:Key="PrimaryColor">#1668DC</Color>
+    <Color x:Key="InfoColor">#1668DC</Color>
+    <Color x:Key="SuccessColor">#49AA19</Color>
+    <Color x:Key="ProcessingColor">#1668DC</Color>
+    <Color x:Key="Blue3">#15325B</Color>
+    <Color x:Key="Blue4">#15417E</Color>
+    <Color x:Key="ErrorColor">#DC4446</Color>
+    <Color x:Key="HighlightColor">#DC4446</Color>
+    <Color x:Key="WarningColor">#D89614</Color>
+    <Color x:Key="NormalColor">#424242</Color>
+    <Color x:Key="HeadingColor">#D9FFFFFF</Color>
+    <Color x:Key="TextColor">#D9FFFFFF</Color>
+    <Color x:Key="TextSecondaryColor">#A6FFFFFF</Color>
+    <Color x:Key="TextTertiaryColor">#73FFFFFF</Color>
+    <Color x:Key="BorderColorBase">#424242</Color>
+    <Color x:Key="BorderColorSecondary">#303030</Color>
+    <Color x:Key="BackgroundColorLight">#111A2C</Color>
+    <Color x:Key="BackgroundColorBase">#14FFFFFF</Color>
+    <Color x:Key="DisabledColor">#40FFFFFF</Color>
+    <Color x:Key="DisabledBackground">#14FFFFFF</Color>
+    <Color x:Key="DisabledColorDark">#59FFFFFF</Color>
+    <Color x:Key="ContainerBackgroundColor">#141414</Color>
+    <Color x:Key="ElevatedBackgroundColor">#1F1F1F</Color>
+    <Color x:Key="TextOnPrimaryColor">#FFFFFF</Color>
+    <Color x:Key="SwitchHandleShadowColor">#005317</Color>
+    <Color x:Key="SuccessBackgroundColor">#162312</Color>
+    <Color x:Key="SuccessBorderColor">#274916</Color>
+    <Color x:Key="InfoBackgroundColor">#111A2C</Color>
+    <Color x:Key="InfoBorderColor">#15325B</Color>
+    <Color x:Key="WarningBackgroundColor">#2B2111</Color>
+    <Color x:Key="WarningBorderColor">#594214</Color>
+    <Color x:Key="ErrorBackgroundColor">#2C1618</Color>
+    <Color x:Key="ErrorBorderColor">#5B2526</Color>
+    <Color x:Key="PrimaryHoverColor">#3C89E8</Color>
+    <Color x:Key="PrimaryActiveColor">#1554AD</Color>
+    <Color x:Key="ShadowColor">#000000</Color>
+
+    <!--  Color Brushs  -->
+    <SolidColorBrush
+        x:Key="PrimaryBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush
+        x:Key="InfoBrush"
+        Options:Freeze="True"
+        Color="{StaticResource InfoColor}" />
+    <SolidColorBrush
+        x:Key="SuccessBrush"
+        Options:Freeze="True"
+        Color="{StaticResource SuccessColor}" />
+    <SolidColorBrush
+        x:Key="ProcessingBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ProcessingColor}" />
+    <SolidColorBrush
+        x:Key="ErrorBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorColor}" />
+    <SolidColorBrush
+        x:Key="HighlightBrush"
+        Options:Freeze="True"
+        Color="{StaticResource HighlightColor}" />
+    <SolidColorBrush
+        x:Key="WarningBrush"
+        Options:Freeze="True"
+        Color="{StaticResource WarningColor}" />
+    <SolidColorBrush
+        x:Key="NormalBrush"
+        Options:Freeze="True"
+        Color="{StaticResource NormalColor}" />
+    <SolidColorBrush
+        x:Key="ContainerBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="ElevatedBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ElevatedBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="TextOnPrimaryBrush"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
+    <SolidColorBrush
+        x:Key="SuccessBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource SuccessBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="SuccessBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource SuccessBorderColor}" />
+    <SolidColorBrush
+        x:Key="InfoBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource InfoBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="InfoBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource InfoBorderColor}" />
+    <SolidColorBrush
+        x:Key="WarningBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource WarningBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="WarningBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource WarningBorderColor}" />
+    <SolidColorBrush
+        x:Key="ErrorBackgroundBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="ErrorBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorBorderColor}" />
+    <SolidColorBrush
+        x:Key="PrimaryHoverBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryHoverColor}" />
+    <SolidColorBrush
+        x:Key="PrimaryActiveBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryActiveColor}" />
+
+    <!-- Background color for `<Window>` -->
+    <SolidColorBrush
+        x:Key="BodyBackground"
+        Options:Freeze="True"
+        Color="#141414" />
+
+    <!--  Base background color for most components  -->
+    <SolidColorBrush
+        x:Key="ComponentBackground"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+    <SolidColorBrush x:Key="HeadingBrush" Color="{StaticResource HeadingColor}" />
+    <SolidColorBrush
+        x:Key="TextBrush"
+        Options:Freeze="True"
+        Color="{StaticResource TextColor}" />
+    <SolidColorBrush
+        x:Key="TextSecondaryBrush"
+        Options:Freeze="True"
+        Color="{StaticResource TextSecondaryColor}" />
+    <SolidColorBrush
+        x:Key="TextTertiaryBrush"
+        Options:Freeze="True"
+        Color="{StaticResource TextTertiaryColor}" />
+    <SolidColorBrush
+        x:Key="IconBrush"
+        Options:Freeze="True"
+        Color="{StaticResource TextTertiaryColor}" />
+    <SolidColorBrush
+        x:Key="IconHoverBrush"
+        Options:Freeze="True"
+        Color="{StaticResource TextColor}" />
+
+    <!--  @Primary1  -->
+    <SolidColorBrush
+        x:Key="ItemMouseOverBackground"
+        Options:Freeze="True"
+        Color="#14FFFFFF" />
+
+    <!--  LINK  -->
+    <SolidColorBrush
+        x:Key="LinkBrush"
+        Options:Freeze="True"
+        Color="#1668DC" />
+    <SolidColorBrush
+        x:Key="LinkHoverBrush"
+        Options:Freeze="True"
+        Color="#15417E" />
+    <SolidColorBrush
+        x:Key="LinkActiveBrush"
+        Options:Freeze="True"
+        Color="#1554AD" />
+
+    <!--  Border  -->
+    <SolidColorBrush
+        x:Key="BorderBrushBase"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorBase}" />
+    <SolidColorBrush
+        x:Key="BorderBrushSecondary"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorSecondary}" />
+    <SolidColorBrush
+        x:Key="BorderBrushSplit"
+        Options:Freeze="True"
+        Color="#1FFDFDFD" />
+
+    <!--  Outline  -->
+    <SolidColorBrush
+        x:Key="OutlineBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+
+    <!--  background of header and selected item  -->
+    <SolidColorBrush
+        x:Key="BackgroundBrushLight"
+        Options:Freeze="True"
+        Color="{StaticResource BackgroundColorLight}" />
+
+    <!--  Disabled states  -->
+    <SolidColorBrush
+        x:Key="DisabledBrush"
+        Options:Freeze="True"
+        Color="{StaticResource DisabledColor}" />
+
+    <!--  Window  -->
+    <SolidColorBrush
+        x:Key="WindowTilteBarForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
+    <SolidColorBrush
+        x:Key="WindowTilteBarBackground"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush
+        x:Key="WindowButtonFocusedBrush"
+        Options:Freeze="True"
+        Color="#26FFFFFF" />
+    <SolidColorBrush
+        x:Key="WindowButtonPressedBrush"
+        Options:Freeze="True"
+        Color="#4CFFFFFF" />
+
+    <!--  Buttons  -->
+    <SolidColorBrush
+        x:Key="ButtonPrimaryForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
+    <SolidColorBrush
+        x:Key="ButtonPrimaryBackground"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush
+        x:Key="ButtonDefaultForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextColor}" />
+    <SolidColorBrush
+        x:Key="ButtonDefaultBackground"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="ButtonDefaultBorder"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorBase}" />
+    <SolidColorBrush
+        x:Key="ButtonDangerForeground"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorColor}" />
+    <SolidColorBrush
+        x:Key="ButtonDangerBackground"
+        Options:Freeze="True"
+        Color="{StaticResource BackgroundColorBase}" />
+    <SolidColorBrush
+        x:Key="ButtonDangerBorder"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorBase}" />
+    <SolidColorBrush
+        x:Key="ButtonDisableForeground"
+        Options:Freeze="True"
+        Color="{StaticResource DisabledColor}" />
+    <SolidColorBrush
+        x:Key="ButtonDisableBackground"
+        Options:Freeze="True"
+        Color="{StaticResource DisabledBackground}" />
+    <SolidColorBrush
+        x:Key="ButtonDisableBorder"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorBase}" />
+
+    <!--  CheckBox  -->
+    <SolidColorBrush
+        x:Key="CheckBoxBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+
+    <!--  Radio  -->
+    <SolidColorBrush
+        x:Key="RadioDotBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+
+    <!--  Radio Button  -->
+    <SolidColorBrush
+        x:Key="RadioButtonBackground"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+
+    <!--  Input  -->
+    <SolidColorBrush
+        x:Key="InputPlaceholderBrush"
+        Options:Freeze="True"
+        Color="#40FFFFFF" />
+    <SolidColorBrush
+        x:Key="InputForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextColor}" />
+    <SolidColorBrush
+        x:Key="InputBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorBase}" />
+    <SolidColorBrush
+        x:Key="InputBackground"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="InputMouseOverBorderBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush
+        x:Key="InputDisabledBackground"
+        Options:Freeze="True"
+        Color="{StaticResource DisabledBackground}" />
+
+    <!--  ToolTip  -->
+    <SolidColorBrush
+        x:Key="ToolTipForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
+    <SolidColorBrush
+        x:Key="ToolTipBackground"
+        Options:Freeze="True"
+        Color="#424242" />
+
+    <!--  Tag  -->
+    <SolidColorBrush
+        x:Key="TagDefaultBackground"
+        Options:Freeze="True"
+        Color="#0AFFFFFF" />
+    <SolidColorBrush
+        x:Key="TagDefaultForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextColor}" />
+    <SolidColorBrush
+        x:Key="TagDefaultBorder"
+        Options:Freeze="True"
+        Color="{StaticResource BorderColorBase}" />
+
+    <!--  Badge  -->
+    <SolidColorBrush
+        x:Key="BadgeBackground"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorColor}" />
+    <SolidColorBrush
+        x:Key="BadgeForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
+    <SolidColorBrush
+        x:Key="BadgeRingBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="BadgeStatusDefaultBrush"
+        Options:Freeze="True"
+        Color="{StaticResource DisabledColor}" />
+
+    <!--  Tabs (v5 colorFillAlter)  -->
+    <SolidColorBrush
+        x:Key="TabsCardBackground"
+        Options:Freeze="True"
+        Color="#0AFFFFFF" />
+
+    <!--  Modal (v5 colorBgMask) and text button hover (v5 colorBgTextHover)  -->
+    <SolidColorBrush
+        x:Key="ModalMaskBrush"
+        Options:Freeze="True"
+        Color="#73000000" />
+    <SolidColorBrush
+        x:Key="TextHoverBackgroundBrush"
+        Options:Freeze="True"
+        Color="#1FFFFFFF" />
+
+    <!--  Avatar  -->
+    <SolidColorBrush
+        x:Key="AvatarBackground"
+        Options:Freeze="True"
+        Color="#40FFFFFF" />
+    <SolidColorBrush
+        x:Key="AvatarForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
+
+    <!--  Switch  -->
+    <SolidColorBrush
+        x:Key="SwitchBrush"
+        Options:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+
+    <!--Slider-->
+    <SolidColorBrush
+     x:Key="SliderBackgroundBrush"
+     Options:Freeze="True"
+     Color="{StaticResource Blue3}" />
+    <SolidColorBrush
+     x:Key="SliderHoverBrush"
+     Options:Freeze="True"
+     Color="{StaticResource Blue4}" />
+</ResourceDictionary>

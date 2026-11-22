@@ -30,7 +30,7 @@
         <Setter Property="Height" Value="{DynamicResource SwitchHeight}" />
         <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}" />
         <Setter Property="Background" Value="{DynamicResource DisabledBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource ComponentBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextOnPrimaryBrush}" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource Ant.SwitchFocusVisualStyle}" />
         <Setter Property="Controls:Control.CornerRadius" Value="{Binding Height, Mode=OneWay, RelativeSource={RelativeSource Self}, 
                                                                     Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}" />
@@ -113,7 +113,7 @@
                                                     Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}">
 
                                     <Border.Effect>
-                                        <DropShadowEffect  Direction="270" BlurRadius="4" ShadowDepth="1" Color="#005317" Opacity="0.2" />
+                                        <DropShadowEffect  Direction="270" BlurRadius="4" ShadowDepth="1" Color="{DynamicResource SwitchHandleShadowColor}" Opacity="0.2" />
                                     </Border.Effect>
                                     <Controls:Icon x:Name="Icon"
                                            Type="loading"

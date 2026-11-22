@@ -10,6 +10,47 @@
                 <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Theme.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!--  Sample-only styles (theme tokens only)  -->
+            <Style x:Key="Sample.SectionTitle" TargetType="TextBlock">
+                <Setter Property="Margin" Value="0,16,0,12" />
+                <Setter Property="FontSize" Value="{DynamicResource FontSizeLarge}" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{DynamicResource HeadingBrush}" />
+            </Style>
+
+            <Style x:Key="Sample.NavigationItem" TargetType="ListBoxItem">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Margin" Value="4,2" />
+                <Setter Property="Padding" Value="16,9" />
+                <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="Border" Padding="{TemplateBinding Padding}" Background="Transparent" CornerRadius="{DynamicResource BorderRadiusBase}">
+                                <ContentPresenter />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ItemMouseOverBackground}" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource BackgroundBrushLight}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Sample.Navigation" TargetType="ListBox">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="0,8" />
+                <Setter Property="ItemContainerStyle" Value="{StaticResource Sample.NavigationItem}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

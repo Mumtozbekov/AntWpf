@@ -1,0 +1,62 @@
+<UserControl x:Class="AntDesignSample.Pages.ModalPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf">
+    <UserControl.Resources>
+        <Style TargetType="Ant:Button" BasedOn="{StaticResource {x:Type Ant:Button}}">
+            <Setter Property="Margin" Value="0,0,8,8" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+
+            <TextBlock Text="Basic" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="Open Modal" Type="Primary" Click="OpenBasic_Click" />
+            </WrapPanel>
+            <Ant:Modal x:Name="basicModal" Title="Basic Modal" Ok="BasicModal_Ok" AfterClose="BasicModal_AfterClose">
+                <StackPanel>
+                    <TextBlock Text="Some contents..." />
+                    <TextBlock Text="Some contents..." />
+                    <TextBox x:Name="nameBox" Ant:Input.Placeholder="Your name" Margin="0,8,0,0" />
+                </StackPanel>
+            </Ant:Modal>
+
+            <TextBlock Text="Asynchronously close (OkButtonLoading)" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="Open Modal with async logic" Click="OpenAsync_Click" />
+            </WrapPanel>
+            <Ant:Modal x:Name="asyncModal" Title="Title" Ok="AsyncModal_Ok">
+                <TextBlock x:Name="asyncText" Text="The modal will be closed after two seconds when OK is clicked." TextWrapping="Wrap" />
+            </Ant:Modal>
+
+            <TextBlock Text="Options" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="Centered, custom footer" Click="OpenCustom_Click" />
+                <Ant:Button Content="No close, mask and Esc disabled" Click="OpenStrict_Click" />
+            </WrapPanel>
+            <Ant:Modal x:Name="customModal" Title="Vertically centered modal" Centered="True" Width="640" OkText="Submit" CancelText="Return">
+                <TextBlock Text="Custom width (640) and a custom footer." />
+                <Ant:Modal.Footer>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Ant:Button Content="Return" Margin="0,0,8,0" Click="CloseCustom_Click" />
+                        <Ant:Button Content="Search on Google" Type="Primary" Click="CloseCustom_Click" />
+                    </StackPanel>
+                </Ant:Modal.Footer>
+            </Ant:Modal>
+            <Ant:Modal x:Name="strictModal" Title="Read the terms" Closable="False" MaskClosable="False" Keyboard="False" OkText="I agree">
+                <TextBlock Text="This modal can only be closed with its buttons." TextWrapping="Wrap" />
+            </Ant:Modal>
+
+            <TextBlock Text="Static (Task&lt;bool&gt;)" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="Confirm" Click="Confirm_Click" />
+                <Ant:Button Content="Info" Click="Info_Click" />
+                <Ant:Button Content="Success" Click="Success_Click" />
+                <Ant:Button Content="Error" Click="Error_Click" />
+                <Ant:Button Content="Warning" Click="Warning_Click" />
+            </WrapPanel>
+            <TextBlock x:Name="eventLog" Margin="0,8,0,0" Foreground="{DynamicResource TextSecondaryBrush}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

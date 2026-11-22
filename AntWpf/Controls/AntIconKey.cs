@@ -451,6 +451,10 @@ namespace AntWpf.Controls
         ZhihuOutlined,
         ZoomInOutlined,
         ZoomOutOutlined,
+        CheckCircleFilled,
+        InfoCircleFilled,
+        ExclamationCircleFilled,
+        CloseCircleFilled,
 
     }
 }

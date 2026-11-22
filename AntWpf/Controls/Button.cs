@@ -19,13 +19,15 @@
 
         private const string PART_Border = "PART_Border";
 
-        private FrameworkElement border;
+        private FrameworkElement? border;
 
-        private VisualState mouseOverState;
+        private VisualState? mouseOverState;
 
-        private VisualState pressedState;
+        private VisualState? pressedState;
 
-        private VisualState focusedState;
+        private VisualState? focusedState;
+
+        private bool isThemeSubscribed;
 
         #endregion
 
@@ -69,7 +71,7 @@
 
         private static void OnLoadingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as Button).SetLoadVisualState();
+            ((Button)d).SetLoadVisualState();
         }
 
         private void SetLoadVisualState()
@@ -134,7 +136,7 @@
 
         private static void OnEffectBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as Button).SetVisualStateAnimation();
+            ((Button)d).SetVisualStateAnimation();
         }
 
         /// <summary>
@@ -142,7 +144,7 @@
         /// </summary>
         private static object OnBackgroundCoerceValue(DependencyObject d, object baseValue)
         {
-            var button = d as Button;
+            var button = (Button)d;
 
             if (button.Ghost)
             {
@@ -160,6 +162,13 @@
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Button), new FrameworkPropertyMetadata(typeof(Button)));
             BackgroundProperty.OverrideMetadata(typeof(Button), new FrameworkPropertyMetadata { CoerceValueCallback = OnBackgroundCoerceValue });
+        }
+
+        public Button()
+        {
+            // ThemeManager.ThemeChanged is static: only listen while loaded so unloaded buttons can be collected.
+            Loaded   += OnLoaded;
+            Unloaded += OnUnloaded;
         }
 
         #endregion
@@ -183,6 +192,33 @@
         #endregion
 
         #region Private Methods
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (isThemeSubscribed) return;
+
+            ThemeManager.ThemeChanged += OnThemeChanged;
+            isThemeSubscribed = true;
+
+            // The theme may have changed while this button was not loaded.
+            SetVisualStateAnimation();
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            if (!isThemeSubscribed) return;
+
+            ThemeManager.ThemeChanged -= OnThemeChanged;
+            isThemeSubscribed = false;
+        }
+
+        /// <summary>
+        /// State storyboards bake theme colors in when they are built, rebuild them for the new theme.
+        /// </summary>
+        private void OnThemeChanged(object? sender, EventArgs e)
+        {
+            SetVisualStateAnimation();
+        }
 
         private void SetVisualStateAnimation()
         {
@@ -231,7 +267,7 @@
             var storyboard = new Storyboard();
             var children = storyboard.Children;
 
-            color = ColorPalette.Toning(color, index);
+            color = Tone(button, color, index);
             children.Add(CreateForegroundAnimation(button, color, duration));
             children.Add(CreateBorderAnimation(PART_Border, color, IsShape, duration));
 
@@ -243,7 +279,7 @@
             var storyboard = new Storyboard();
             var children   = storyboard.Children;
 
-            color = ColorPalette.Toning(color, index);
+            color = Tone(button, color, index);
 
             if (button.Ghost)
             {
@@ -264,7 +300,7 @@
             var children   = storyboard.Children;
 
             Color foreground;
-            color = ColorPalette.Toning(color, index);
+            color = Tone(button, color, index);
 
             if (button.Ghost)
             {
@@ -276,11 +312,11 @@
                 if (focused)
                 {
                     foreground = color;
-                    background = Colors.White;
+                    background = FindColor(button, "ContainerBackgroundColor", Colors.White);
                 }
                 else
                 {
-                    foreground = Colors.White;
+                    foreground = FindColor(button, "TextOnPrimaryColor", Colors.White);
                     background = color;
                 }
 
@@ -291,6 +327,32 @@
             children.Add(CreateBorderAnimation(PART_Border, color, IsShape, duration));
 
             return storyboard;
+        }
+
+        /// <summary>
+        /// Looks up a theme <see cref="Color"/> resource, falling back when it is not available.
+        /// </summary>
+        private static Color FindColor(FrameworkElement element, string key, Color fallback)
+        {
+            return element.TryFindResource(key) is Color color ? color : fallback;
+        }
+
+        /// <summary>
+        /// Derives a state color (5 = hover, 7 = active) from <paramref name="color"/> for the current theme:
+        /// on a dark container background the Ant Design dark algorithm is used.
+        /// </summary>
+        private static Color Tone(Button button, Color color, int index)
+        {
+            var background = FindColor(button, "ContainerBackgroundColor", Colors.White);
+
+            return IsDark(background)
+                ? ColorPalette.ToningDark(color, index, background)
+                : ColorPalette.Toning(color, index);
+        }
+
+        private static bool IsDark(Color color)
+        {
+            return (0.2126 * color.R + 0.7152 * color.G + 0.0722 * color.B) / 255 < 0.5;
         }
 
         private static Timeline CreateForegroundAnimation(DependencyObject target, Color color, Duration? duration = null)

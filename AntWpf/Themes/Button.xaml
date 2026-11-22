@@ -5,7 +5,6 @@
     xmlns:converters="clr-namespace:AntWpf.Converters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Theme.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Animations.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/AntIcons.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -135,8 +134,8 @@
         <Style.Triggers>
             <!--  Ghost State  -->
             <Trigger Property="Ghost" Value="True">
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="Foreground" Value="{DynamicResource TextOnPrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource TextOnPrimaryBrush}" />
                 <Setter Property="Background" Value="Transparent" />
             </Trigger>
             <!--  Primary  -->

@@ -17,6 +17,30 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     </Application.Resources>
 </Application>
 ```
+## Dark theme
+
+The Light theme is used by default. To start the application in the Dark theme, merge `Themes/Dark.xaml` after `Controls.xaml`:
+```
+<ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Theme.xaml" />
+<ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Controls.xaml" />
+<ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Dark.xaml" />
+```
+To switch the theme while the application is running, use `ThemeManager`:
+```
+using AntWpf;
+
+ThemeManager.SetTheme(AntTheme.Dark);   // or AntTheme.Light
+AntTheme current = ThemeManager.Current;
+ThemeManager.ThemeChanged += (s, e) => { /* theme switched */ };
+```
+`SetTheme` replaces the Light/Dark dictionary in `Application.Current.Resources` (or adds it) and leaves other dictionaries untouched. It can be called from any thread.
+
+Use `DynamicResource` for theme colors in your own XAML so they follow the theme:
+```
+<Window ... Background="{DynamicResource BodyBackground}" Foreground="{DynamicResource TextBrush}">
+```
+To customize colors, override brush keys (for example `PrimaryBrush`) in a dictionary merged after the theme dictionary. Overriding only a color key such as `PrimaryColor` does not change the brushes.
+
 ## Buttons
 
 ![Buttons](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/buttons.png?raw=true)
@@ -86,6 +110,107 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
 ```
   <Ant:AntIcon Key="AntCloudOutlined" Margin="4" Height="32" HorizontalAlignment="Center" Width="32"/>
 ```
+## Tag
+
+![Tag](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/tag.png?raw=true)
+```
+<Ant:Tag Content="Tag 1" />
+<Ant:Tag Color="Success" Icon="CheckOutlined" Content="success" />
+<Ant:Tag Color="#F50" Content="#f50" Closable="True" Closing="Tag_Closing" />
+<Ant:Tag Bordered="False" Color="Error" Content="error" />
+<Ant:CheckableTag Content="Movies" IsChecked="True" />
+```
+`Color` accepts `Success`, `Processing`, `Error`, `Warning`, `Default` or any brush. Set `e.Cancel = true` in `Closing` to keep the tag.
+
+## Badge
+
+![Badge](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/badge.png?raw=true)
+```
+<Ant:Badge Count="5">
+    <Border Width="40" Height="40" CornerRadius="6" Background="{DynamicResource AvatarBackground}" />
+</Ant:Badge>
+<Ant:Badge Count="100" OverflowCount="99">
+    <Border Width="40" Height="40" CornerRadius="6" Background="{DynamicResource AvatarBackground}" />
+</Ant:Badge>
+<Ant:Badge Dot="True">
+    <Ant:AntIcon Key="NotificationOutlined" Width="16" Height="16" />
+</Ant:Badge>
+<Ant:Badge Status="Processing" Text="Processing" />
+```
+
+## Alert
+
+![Alert](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/alert.png?raw=true)
+```
+<Ant:Alert Type="Success" Message="Success Text" />
+<Ant:Alert Type="Error" ShowIcon="True" Closable="True" Message="Error"
+           Description="This is an error message about copywriting." />
+<Ant:Alert Type="Info" ShowIcon="True" Message="With action">
+    <Ant:Alert.Action>
+        <Ant:Button Content="UNDO" Size="Small" />
+    </Ant:Alert.Action>
+</Ant:Alert>
+<Ant:Alert Banner="True" Message="Warning text" />
+```
+
+## Tabs
+
+![Tabs](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/tabs.png?raw=true)
+The standard `TabControl` and `TabItem` get the Ant Design style from `Controls.xaml`; options are attached properties of `Ant:Tabs`.
+```
+<TabControl Ant:Tabs.Centered="True" TabStripPlacement="Top">
+    <TabItem Header="Tab 1"><TextBlock Text="Content of Tab 1" /></TabItem>
+    <TabItem Header="Tab 2"><TextBlock Text="Content of Tab 2" /></TabItem>
+</TabControl>
+
+<TabControl Ant:Tabs.Type="Card" Ant:Tabs.Closable="True" Ant:Tabs.CloseRequested="Tabs_CloseRequested">
+    <TabItem Header="Tab 1"><TextBlock Text="Content of Tab 1" /></TabItem>
+    <TabItem Header="Tab 2"><TextBlock Text="Content of Tab 2" /></TabItem>
+</TabControl>
+```
+```
+private void Tabs_CloseRequested(object sender, RoutedEventArgs e)
+    => ((TabControl)sender).Items.Remove(e.OriginalSource);
+```
+
+## Message
+
+![Message](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/message.png?raw=true)
+Messages are shown at the top of the active window and can be called from any thread.
+```
+using AntWpf.Controls;
+
+Message.Success("This is a success message");
+
+using (Message.Loading("Saving...", TimeSpan.Zero))
+{
+    await SaveAsync();
+}
+
+Message.Config(top: 24, duration: TimeSpan.FromSeconds(2), maxCount: 3);
+```
+
+## Modal
+
+![Modal](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/modal.png?raw=true)
+```
+<Ant:Modal x:Name="modal" Title="Basic Modal" IsOpen="{Binding IsDialogOpen}" Ok="Modal_Ok">
+    <TextBlock Text="Some contents..." />
+</Ant:Modal>
+```
+```
+// Keep the modal open while saving: cancel the Ok event and close it later.
+private async void Modal_Ok(object sender, CancelEventArgs e)
+{
+    e.Cancel = true;
+    modal.OkButtonLoading = true;
+    await SaveAsync();
+    modal.IsOpen = false;
+}
+
+bool ok = await Modal.Confirm("Do you want to delete these items?", "This cannot be undone.");
+```
+
 [![AntDesign](https://img.shields.io/nuget/dt/AntWpf)](https://www.nuget.org/packages/AntWpf/)
 [![AntDesign](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/LICENSE.txt)
 

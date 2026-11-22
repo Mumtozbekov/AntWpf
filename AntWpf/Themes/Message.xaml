@@ -1,0 +1,94 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:AntWpf.Controls"
+    xmlns:converters="clr-namespace:AntWpf.Converters"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <Style TargetType="{x:Type Controls:MessageItem}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="{DynamicResource MessageItemMargin}" />
+        <Setter Property="Padding" Value="{DynamicResource MessagePadding}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeBase}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ElevatedBackgroundBrush}" />
+        <Setter Property="Controls:Control.CornerRadius" Value="{DynamicResource MessageBorderRadius}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:MessageItem}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding Controls:Control.CornerRadius}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Border.Effect>
+                            <!--  Approximation of the Ant Design boxShadow  -->
+                            <DropShadowEffect
+                                BlurRadius="16"
+                                Direction="270"
+                                Opacity="0.12"
+                                ShadowDepth="4"
+                                Color="{DynamicResource ShadowColor}" />
+                        </Border.Effect>
+                        <StackPanel Orientation="Horizontal">
+                            <Controls:AntIcon
+                                x:Name="PART_Icon"
+                                Width="{DynamicResource MessageIconSize}"
+                                Height="{DynamicResource MessageIconSize}"
+                                Margin="0,0,8,0"
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource InfoBrush}"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Controls:AntIcon.RenderTransform>
+                                    <RotateTransform />
+                                </Controls:AntIcon.RenderTransform>
+                            </Controls:AntIcon>
+                            <ContentPresenter VerticalAlignment="Center">
+                                <ContentPresenter.Resources>
+                                    <DataTemplate DataType="{x:Type sys:String}">
+                                        <TextBlock
+                                            LineHeight="{Binding FontSize, RelativeSource={RelativeSource Self}, Converter={converters:MathConverter Operation=Multiply}, ConverterParameter=1.5714}"
+                                            LineStackingStrategy="BlockLineHeight"
+                                            Text="{Binding}"
+                                            TextWrapping="Wrap" />
+                                    </DataTemplate>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Type" Value="Success">
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource SuccessBrush}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Warning">
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource WarningBrush}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Error">
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource ErrorBrush}" />
+                        </Trigger>
+                        <Trigger Property="Type" Value="Loading">
+                            <Setter TargetName="PART_Icon" Property="Foreground" Value="{DynamicResource PrimaryBrush}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="SpinStoryboard">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Icon"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                            From="0"
+                                            To="360"
+                                            Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="SpinStoryboard" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

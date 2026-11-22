@@ -21,6 +21,18 @@
 
         private const int darkColorCount = 4;
 
+        // Opacity of the base color (light palette index 6) in the dark palette.
+        private const double darkBaseOpacity = 0.85;
+
+        // @ant-design/colors darkColorMap: light palette index (0-based) mixed over the background with the opacity.
+        private static readonly (int Index, double Opacity)[] darkColorMap =
+        {
+            (7, 0.15), (6, 0.25), (5, 0.3), (5, 0.45), (5, 0.65), (5, 0.85), (4, 0.9), (3, 0.95), (2, 0.97), (1, 0.98)
+        };
+
+        // Ant Design v5 dark algorithm (generateColorPalettes): color token 1..10 -> dark palette index.
+        private static readonly int[] darkTokenMap = { 0, 1, 2, 3, 6, 5, 4, 6, 5, 4 };
+
         #endregion
 
         #region Public Methods
@@ -35,9 +47,69 @@
             return Hsv2Color(GetHue(hsv, i, isLight), GetSaturation(hsv, i, isLight), GetValue(hsv, i, isLight), color.A);
         }
 
+        /// <summary>
+        /// Dark theme counterpart of <see cref="Toning"/>, following the Ant Design v5 dark algorithm.
+        /// </summary>
+        /// <param name="color">A dark theme color, e.g. the dark PrimaryColor (#1668DC).</param>
+        /// <param name="index">Same meaning as in <see cref="Toning"/>: 5 = hover, 6 = base, 7 = active.</param>
+        /// <param name="background">The dark container background the palette is mixed over (#141414).</param>
+        /// <remarks>
+        /// The dark color is mix(background, seed, 0.85) of a light seed color. The seed is recovered, its
+        /// light palette is generated with <see cref="Toning"/>, mixed over <paramref name="background"/>
+        /// and picked the way the v5 dark algorithm maps color tokens. Because the dark color is already
+        /// rounded, results can differ from Ant Design by 1 per channel.
+        /// </remarks>
+        public static Color ToningDark(Color color, int index, Color background)
+        {
+            if (index < 1 || index > darkTokenMap.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), index, "Index must be between 1 and 10.");
+            }
+
+            var seed = new Color
+            {
+                A = color.A,
+                R = Unmix(background.R, color.R, darkBaseOpacity),
+                G = Unmix(background.G, color.G, darkBaseOpacity),
+                B = Unmix(background.B, color.B, darkBaseOpacity)
+            };
+
+            var (lightIndex, opacity) = darkColorMap[darkTokenMap[index - 1]];
+            var light = Toning(seed, lightIndex + 1);
+
+            return new Color
+            {
+                A = color.A,
+                R = Mix(background.R, light.R, opacity),
+                G = Mix(background.G, light.G, opacity),
+                B = Mix(background.B, light.B, opacity)
+            };
+        }
+
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// tinycolor.mix: background + (color - background) * amount, per channel.
+        /// </summary>
+        private static byte Mix(byte background, byte color, double amount)
+        {
+            return ToByte(background + (color - background) * amount);
+        }
+
+        /// <summary>
+        /// Inverse of <see cref="Mix"/>: the color that mixed over background with amount gives mixed.
+        /// </summary>
+        private static byte Unmix(byte background, byte mixed, double amount)
+        {
+            return ToByte(background + (mixed - background) / amount);
+        }
+
+        private static byte ToByte(double value)
+        {
+            return (byte)Math.Max(0, Math.Min(255, Math.Round(value, MidpointRounding.AwayFromZero)));
+        }
 
         private static double GetHue(HSV hsv, int i, bool isLight)
         {

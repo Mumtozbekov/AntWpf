@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-using AntWpf.Controls;
+using AntDesignSample.Pages;
+using AntWpf;
 
 namespace AntDesignSample
 {
@@ -23,41 +13,43 @@ namespace AntDesignSample
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly Dictionary<string, Func<UserControl>> pageFactories = new()
+        {
+            ["General"] = () => new GeneralPage(),
+            ["Icons"] = () => new IconsPage(),
+            ["Tag"] = () => new TagPage(),
+            ["Badge"] = () => new BadgePage(),
+            ["Alert"] = () => new AlertPage(),
+            ["Tabs"] = () => new TabsPage(),
+            ["Message"] = () => new MessagePage(),
+            ["Modal"] = () => new ModalPage(),
+        };
+
+        private readonly Dictionary<string, UserControl> pages = new();
+
         public MainWindow()
         {
             InitializeComponent();
+            navigation.SelectedIndex = 0;
         }
-        ObservableCollection<AntIconKey> iconsCollection = new();
-        public override void OnApplyTemplate()
+
+        private void Navigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            base.OnApplyTemplate();
+            if (navigation.SelectedItem is not ListBoxItem { Tag: string key }) return;
 
-
-            foreach (var animalValue in Enum.GetValues<AntIconKey>())
+            if (!pages.TryGetValue(key, out var view))
             {
-                iconsCollection.Add(animalValue);
+                view = pageFactories[key]();
+                pages[key] = view;
             }
-            iconsList.ItemsSource = iconsCollection;
+
+            page.Content = view;
         }
 
-
-        private void iconSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            var key = iconSearchBox.Text;
-
-            var view = CollectionViewSource.GetDefaultView(iconsCollection);
-
-            view.Filter = (o) =>
-            {
-                if (string.IsNullOrEmpty(key))
-                    return true;
-
-                if (o is AntIconKey iconKey)
-                {
-                    return iconKey.ToString().ToLower().Contains(key.ToLower());
-                }
-                return false;
-            };
+            ThemeManager.SetTheme(ThemeManager.Current == AntTheme.Light ? AntTheme.Dark : AntTheme.Light);
+            themeButton.Content = ThemeManager.Current == AntTheme.Light ? "Dark" : "Light";
         }
     }
 }

@@ -17,11 +17,13 @@ namespace AntWpf.Controls
 
         private const string PART_Dot = "PART_Dot";
 
-        private FrameworkElement dot;
+        private FrameworkElement? dot;
 
-        private VisualState pressedState;
+        private VisualState? pressedState;
 
-        private Storyboard pressedStoryboard;
+        private Storyboard? pressedStoryboard;
+
+        private Thickness? dotRestMargin;
 
         #endregion
 
@@ -94,32 +96,36 @@ namespace AntWpf.Controls
             base.OnRenderSizeChanged(sizeInfo);
             SetDotAnimation();
         }
-        private bool DotAnimated = false;
         protected override void OnIsPressedChanged(DependencyPropertyChangedEventArgs e)
         {
             base.OnIsPressedChanged(e);
-            //if (!DotAnimated)
-            //{
-            if (dot != null /*&& IsChecked.HasValue && IsChecked.Value*/ && IsPressed)
+
+            if (dot == null) return;
+
+            if (IsPressed)
             {
+                dotRestMargin = dot.Margin;
+
                 var to = dot.Margin;
-                // to.Left -= dot.ActualWidth * 1.3333 - dot.ActualWidth;
                 to.Right -= dot.ActualWidth * 1.3333 - dot.ActualWidth;
                 var ease = new CircleEase() { EasingMode = EasingMode.EaseInOut };
                 var animation = new ThicknessAnimation(to, TimeSpan.FromSeconds(0.36)) { EasingFunction = ease };
 
                 dot.BeginAnimation(MarginProperty, animation);
             }
-
-            //else if (!IsPressed) DotAnimated = false;
-            //}
+            else if (dotRestMargin.HasValue)
+            {
+                // Restore the margin the dot had before it was pressed (Checked/Unchecked
+                // state margins differ, so the base value is not always correct).
+                dot.BeginAnimation(MarginProperty, new ThicknessAnimation(dotRestMargin.Value, TimeSpan.Zero));
+                dotRestMargin = null;
+            }
         }
 
         private void SetDotAnimation()
         {
-            if (dot == null || pressedState == null || DotAnimated) return;
+            if (dot == null || pressedState == null) return;
 
-            DotAnimated = true;
             var storyboard = pressedStoryboard != null ? pressedStoryboard.Clone() : new Storyboard();
             var ease = new CircleEase() { EasingMode = EasingMode.EaseInOut };
             var animation = new DoubleAnimation(dot.ActualWidth * 1.3333, TimeSpan.FromSeconds(0.36)) { EasingFunction = ease };

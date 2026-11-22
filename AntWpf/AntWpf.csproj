@@ -9,16 +9,15 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>ant_wpf.ico</ApplicationIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIcon>logos_ant-design.png</PackageIcon>
     <RepositoryUrl>https://github.com/Mumtozbekov/AntWpf</RepositoryUrl>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
-	  <AssemblyVersion>1.0.2.0</AssemblyVersion>
-	  <FileVersion>1.0.2.0</FileVersion>
+	  <AssemblyVersion>1.0.5.0</AssemblyVersion>
+	  <FileVersion>1.0.5.0</FileVersion>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <Authors>$(AssemblyName)Mumtozbekov</Authors>
+	  <Authors>Mumtozbekov</Authors>
   </PropertyGroup>
 
 

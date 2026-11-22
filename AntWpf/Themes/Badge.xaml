@@ -1,0 +1,163 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:AntWpf.Controls"
+    xmlns:converters="clr-namespace:AntWpf.Converters">
+
+    <Style TargetType="{x:Type Controls:Badge}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Background" Value="{DynamicResource BadgeBackground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:Badge}">
+                    <Grid>
+                        <!--  Content  -->
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                        <!--  Status dot and text (no content)  -->
+                        <StackPanel
+                            x:Name="PART_Status"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed">
+                            <Grid
+                                Width="{DynamicResource BadgeStatusSize}"
+                                Height="{DynamicResource BadgeStatusSize}"
+                                VerticalAlignment="Center">
+                                <Ellipse
+                                    x:Name="Ripple"
+                                    Opacity="0"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    Stroke="{TemplateBinding Background}"
+                                    StrokeThickness="1">
+                                    <Ellipse.RenderTransform>
+                                        <ScaleTransform />
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                                <Ellipse Fill="{TemplateBinding Background}" />
+                            </Grid>
+                            <TextBlock
+                                x:Name="StatusText"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource TextBrush}"
+                                Text="{TemplateBinding Text}" />
+                        </StackPanel>
+
+                        <!--  Count / dot  -->
+                        <Border
+                            x:Name="PART_Indicator"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{DynamicResource BadgeRingBrush}"
+                            BorderThickness="1"
+                            CornerRadius="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}, Converter={converters:DoubleToCornerRadiusConverter}, ConverterParameter=2}"
+                            IsHitTestVisible="False"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            Visibility="Collapsed">
+                            <Border
+                                x:Name="CountBox"
+                                Height="{DynamicResource BadgeHeight}"
+                                MinWidth="{DynamicResource BadgeHeight}"
+                                Padding="{DynamicResource BadgePadding}">
+                                <TextBlock
+                                    x:Name="PART_Count"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="{DynamicResource BadgeFontSize}"
+                                    FontWeight="{DynamicResource BadgeFontWeight}"
+                                    Foreground="{DynamicResource BadgeForeground}" />
+                            </Border>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--  Standalone count: inline instead of on a corner  -->
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="PART_Indicator" Property="HorizontalAlignment" Value="Left" />
+                            <Setter TargetName="PART_Indicator" Property="VerticalAlignment" Value="Center" />
+                        </Trigger>
+                        <Trigger Property="Size" Value="Small">
+                            <Setter TargetName="CountBox" Property="Height" Value="{DynamicResource BadgeHeightSmall}" />
+                            <Setter TargetName="CountBox" Property="MinWidth" Value="{DynamicResource BadgeHeightSmall}" />
+                            <Setter TargetName="CountBox" Property="Padding" Value="{DynamicResource BadgePaddingSmall}" />
+                        </Trigger>
+                        <Trigger Property="Dot" Value="True">
+                            <Setter TargetName="CountBox" Property="Height" Value="{DynamicResource BadgeDotSize}" />
+                            <Setter TargetName="CountBox" Property="MinWidth" Value="{DynamicResource BadgeDotSize}" />
+                            <Setter TargetName="CountBox" Property="Padding" Value="0" />
+                            <Setter TargetName="PART_Count" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <!--  Processing: ripple around the status dot  -->
+                        <Trigger Property="Status" Value="Processing">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="RippleStoryboard">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Ripple"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                            From="0.8"
+                                            To="2.4"
+                                            Duration="0:0:1.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <SineEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Ripple"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                            From="0.8"
+                                            To="2.4"
+                                            Duration="0:0:1.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <SineEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Ripple"
+                                            Storyboard.TargetProperty="Opacity"
+                                            From="0.5"
+                                            To="0"
+                                            Duration="0:0:1.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <SineEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="RippleStoryboard" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Status" Value="Success">
+                <Setter Property="Background" Value="{DynamicResource SuccessBrush}" />
+            </Trigger>
+            <Trigger Property="Status" Value="Processing">
+                <Setter Property="Background" Value="{DynamicResource InfoBrush}" />
+            </Trigger>
+            <Trigger Property="Status" Value="Default">
+                <Setter Property="Background" Value="{DynamicResource BadgeStatusDefaultBrush}" />
+            </Trigger>
+            <Trigger Property="Status" Value="Error">
+                <Setter Property="Background" Value="{DynamicResource ErrorBrush}" />
+            </Trigger>
+            <Trigger Property="Status" Value="Warning">
+                <Setter Property="Background" Value="{DynamicResource WarningBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
