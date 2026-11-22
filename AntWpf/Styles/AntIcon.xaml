@@ -4,7 +4,7 @@
     <Style TargetType="{x:Type controls:AntIcon}" >
         <Setter Property="FlowDirection" Value="LeftToRight" />
         <Setter Property="Height" Value="16" />
-        <Setter Property="Foreground" Value="{StaticResource IconBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource IconBrush}"/>
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
