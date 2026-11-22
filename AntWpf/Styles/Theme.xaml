@@ -131,6 +131,12 @@
     <Thickness x:Key="TabsBarMarginLeft">0,0,24,0</Thickness>
     <Thickness x:Key="TabsBarMarginRight">24,0,0,0</Thickness>
 
+    <!--  Message  -->
+    <Thickness x:Key="MessagePadding">12 9</Thickness>
+    <CornerRadius x:Key="MessageBorderRadius">8</CornerRadius>
+    <System:Double x:Key="MessageIconSize">16</System:Double>
+    <Thickness x:Key="MessageItemMargin">0,0,0,8</Thickness>
+
     <!--  Avatar  -->
     <System:Double x:Key="AvatarSizeSmall">24</System:Double>
     <System:Double x:Key="AvatarSizeBase">32</System:Double>

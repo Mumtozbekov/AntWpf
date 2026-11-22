@@ -8,6 +8,7 @@
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Badge.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Alert.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Tabs.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Message.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/ComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/CheckBox.xaml" />

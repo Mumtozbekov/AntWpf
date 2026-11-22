@@ -21,6 +21,7 @@ namespace AntDesignSample
             ["Badge"] = () => new BadgePage(),
             ["Alert"] = () => new AlertPage(),
             ["Tabs"] = () => new TabsPage(),
+            ["Message"] = () => new MessagePage(),
         };
 
         private readonly Dictionary<string, UserControl> pages = new();

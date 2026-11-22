@@ -44,6 +44,7 @@
     <Color x:Key="ErrorBorderColor">#FFCCC7</Color>
     <Color x:Key="PrimaryHoverColor">#4096FF</Color>
     <Color x:Key="PrimaryActiveColor">#0958D9</Color>
+    <Color x:Key="ShadowColor">#000000</Color>
 
     <!--  Color Brushs  -->
     <SolidColorBrush

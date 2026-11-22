@@ -1,0 +1,41 @@
+<UserControl x:Class="AntDesignSample.Pages.MessagePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Ant="clr-namespace:AntWpf.Controls;assembly=AntWpf">
+    <UserControl.Resources>
+        <Style TargetType="Ant:Button" BasedOn="{StaticResource {x:Type Ant:Button}}">
+            <Setter Property="Margin" Value="0,0,8,8" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+
+            <TextBlock Text="Types" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="Info" Type="Primary" Click="Info_Click" />
+                <Ant:Button Content="Success" Click="Success_Click" />
+                <Ant:Button Content="Warning" Click="Warning_Click" />
+                <Ant:Button Content="Error" Click="Error_Click" />
+                <Ant:Button Content="Loading" Click="Loading_Click" />
+            </WrapPanel>
+
+            <TextBlock Text="Loading, then success" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="Save (2.5s)" Click="LoadingThenSuccess_Click" />
+            </WrapPanel>
+
+            <TextBlock Text="Duration and manual close" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="10 seconds" Click="Long_Click" />
+                <Ant:Button Content="Close last" Click="CloseLast_Click" />
+            </WrapPanel>
+
+            <TextBlock Text="Threads and config" Style="{StaticResource Sample.SectionTitle}" />
+            <WrapPanel>
+                <Ant:Button Content="From a background thread" Click="Background_Click" />
+                <Ant:Button Content="Config: maxCount 3" Click="MaxCount_Click" />
+                <Ant:Button Content="Config: reset" Click="Reset_Click" />
+            </WrapPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
