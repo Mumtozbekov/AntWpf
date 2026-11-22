@@ -349,6 +349,24 @@
         Options:Freeze="True"
         Color="{StaticResource BorderColorBase}" />
 
+    <!--  Badge  -->
+    <SolidColorBrush
+        x:Key="BadgeBackground"
+        Options:Freeze="True"
+        Color="{StaticResource ErrorColor}" />
+    <SolidColorBrush
+        x:Key="BadgeForeground"
+        Options:Freeze="True"
+        Color="{StaticResource TextOnPrimaryColor}" />
+    <SolidColorBrush
+        x:Key="BadgeRingBrush"
+        Options:Freeze="True"
+        Color="{StaticResource ContainerBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="BadgeStatusDefaultBrush"
+        Options:Freeze="True"
+        Color="{StaticResource DisabledColor}" />
+
     <!--  Avatar  -->
     <SolidColorBrush
         x:Key="AvatarBackground"
