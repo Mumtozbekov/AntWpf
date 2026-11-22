@@ -5,7 +5,6 @@
     xmlns:converters="clr-namespace:AntWpf.Converters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Theme.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Animations.xaml" />
         <ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/AntIcons.xaml" />
     </ResourceDictionary.MergedDictionaries>
