@@ -17,11 +17,11 @@ namespace AntWpf.Controls
 
         private const string PART_Dot = "PART_Dot";
 
-        private FrameworkElement dot;
+        private FrameworkElement? dot;
 
-        private VisualState pressedState;
+        private VisualState? pressedState;
 
-        private Storyboard pressedStoryboard;
+        private Storyboard? pressedStoryboard;
 
         #endregion
 

@@ -27,7 +27,7 @@ namespace AntWpf.Controls
         private static void changing(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var anim = new DoubleAnimation((double)e.OldValue, (double)e.NewValue, new TimeSpan(0, 0, 0, 0, 300));
-            (d as ProgressBar).BeginAnimation(ProgressBar.ValueProperty, anim, HandoffBehavior.Compose);
+            ((ProgressBar)d).BeginAnimation(ProgressBar.ValueProperty, anim, HandoffBehavior.Compose);
         }
     }
 }

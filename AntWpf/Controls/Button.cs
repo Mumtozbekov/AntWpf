@@ -19,13 +19,13 @@
 
         private const string PART_Border = "PART_Border";
 
-        private FrameworkElement border;
+        private FrameworkElement? border;
 
-        private VisualState mouseOverState;
+        private VisualState? mouseOverState;
 
-        private VisualState pressedState;
+        private VisualState? pressedState;
 
-        private VisualState focusedState;
+        private VisualState? focusedState;
 
         #endregion
 
@@ -69,7 +69,7 @@
 
         private static void OnLoadingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as Button).SetLoadVisualState();
+            ((Button)d).SetLoadVisualState();
         }
 
         private void SetLoadVisualState()
@@ -134,7 +134,7 @@
 
         private static void OnEffectBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as Button).SetVisualStateAnimation();
+            ((Button)d).SetVisualStateAnimation();
         }
 
         /// <summary>
@@ -142,7 +142,7 @@
         /// </summary>
         private static object OnBackgroundCoerceValue(DependencyObject d, object baseValue)
         {
-            var button = d as Button;
+            var button = (Button)d;
 
             if (button.Ghost)
             {

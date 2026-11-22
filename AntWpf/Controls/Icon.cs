@@ -207,7 +207,7 @@
 
         private static void OnSpinChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as Icon).SetSpinAnimation();
+            ((Icon)d).SetSpinAnimation();
         }
 
         #endregion
