@@ -17,6 +17,30 @@ A UI framework using [ant design](https://ant.design/docs/spec/introduce) langua
     </Application.Resources>
 </Application>
 ```
+## Dark theme
+
+The Light theme is used by default. To start the application in the Dark theme, merge `Themes/Dark.xaml` after `Controls.xaml`:
+```
+<ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Theme.xaml" />
+<ResourceDictionary Source="pack://application:,,,/AntWpf;component/Styles/Controls.xaml" />
+<ResourceDictionary Source="pack://application:,,,/AntWpf;component/Themes/Dark.xaml" />
+```
+To switch the theme while the application is running, use `ThemeManager`:
+```
+using AntWpf;
+
+ThemeManager.SetTheme(AntTheme.Dark);   // or AntTheme.Light
+AntTheme current = ThemeManager.Current;
+ThemeManager.ThemeChanged += (s, e) => { /* theme switched */ };
+```
+`SetTheme` replaces the Light/Dark dictionary in `Application.Current.Resources` (or adds it) and leaves other dictionaries untouched. It can be called from any thread.
+
+Use `DynamicResource` for theme colors in your own XAML so they follow the theme:
+```
+<Window ... Background="{DynamicResource BodyBackground}" Foreground="{DynamicResource TextBrush}">
+```
+To customize colors, override brush keys (for example `PrimaryBrush`) in a dictionary merged after the theme dictionary. Overriding only a color key such as `PrimaryColor` does not change the brushes.
+
 ## Buttons
 
 ![Buttons](https://github.com/mumtozbekov/AntWpf/blob/master/AntWpf/images/buttons.png?raw=true)
