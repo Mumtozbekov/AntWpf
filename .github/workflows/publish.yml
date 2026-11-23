@@ -1,0 +1,32 @@
+name: Publish to NuGet
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'AntWpf/**'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: windows-latest   # WPF faqat Windows'da build bo'ladi
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore AntWpf/AntWpf.csproj
+
+      - name: Build
+        run: dotnet build AntWpf/AntWpf.csproj -c Release --no-restore -p:VersionSuffix= -p:Version=1.1.${{ github.run_number }}
+
+      - name: Pack
+        run: dotnet pack AntWpf/AntWpf.csproj -c Release --no-build -o ./artifacts -p:Version=1.1.${{ github.run_number }}
+
+      - name: Push
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
