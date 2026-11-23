@@ -1,18 +1,35 @@
+name: Publish to NuGet
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'AntWpf/**'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
+
 jobs:
-  build-and-publish:
+  publish:
+    runs-on: windows-latest
     permissions:
-      id-token: write  # enable GitHub OIDC token issuance for this job
-    
+      contents: read
+      id-token: write
+
     steps:
-      # Build your artifacts/my-sdk.nupkg package here
-    
-      # Get a short-lived NuGet API key
-      - name: NuGet login (OIDC → temp API key)
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Pack
+        run: dotnet pack AntWpf/AntWpf.csproj -c Release -o ./artifacts -p:Version=1.1.${{ github.run_number }}
+
+      - name: NuGet login (OIDC)
         uses: NuGet/login@v1
         id: login
         with:
-          user: contoso-bot # Recommended: use a secret like ${{ secrets.NUGET_USER }} for your nuget.org username (profile name), NOT your email address
-    
-      # Push the package
-      - name: NuGet push
-        run: dotnet nuget push artifacts/my-sdk.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Push
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
