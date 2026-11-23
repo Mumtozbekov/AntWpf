@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>1.0.5</Version>
+		<VersionPrefix>1.1</VersionPrefix>
 		<Platforms>AnyCPU;x86</Platforms>
 	</PropertyGroup>
 	
