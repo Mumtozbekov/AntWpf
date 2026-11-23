@@ -9,7 +9,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageIcon>logos_ant-design.png</PackageIcon>
     <RepositoryUrl>https://github.com/Mumtozbekov/AntWpf</RepositoryUrl>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
