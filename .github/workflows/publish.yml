@@ -32,4 +32,7 @@ jobs:
           user: ${{ secrets.NUGET_USER }}
 
       - name: Push
-        run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: |
+          Get-ChildItem "${{ github.workspace }}\artifacts\*.nupkg" | ForEach-Object {
+            dotnet nuget push $_.FullName --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
