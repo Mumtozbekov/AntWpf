@@ -10,12 +10,28 @@
           on WPF cloning frozen brushes per control.  -->
 
     <!--  Colors  -->
-    <Color x:Key="PrimaryColor">#1668DC</Color>
+    <!--  Primary palette, Ant Design v5 color tokens: 1 Bg, 2 BgHover, 3 Border, 4 BorderHover,
+          5 Hover, 6 Primary, 7 Active, 8 TextHover, 9 Text, 10 TextActive.
+          Ant Design v5 dark algorithm: the light palette mixed over #141414, tokens 8..10 repeat 5..7.
+          Brushes that follow the primary color reference these tokens; Color keys (PrimaryColor,
+          PrimaryHoverColor, ...) repeat the value because a Color resource cannot alias another one.  -->
+    <Color x:Key="Primary1Color">#111A2C</Color>
+    <Color x:Key="Primary2Color">#112545</Color>
+    <Color x:Key="Primary3Color">#15325B</Color>
+    <Color x:Key="Primary4Color">#15417E</Color>
+    <Color x:Key="Primary5Color">#3C89E8</Color>
+    <Color x:Key="Primary6Color">#1668DC</Color>
+    <Color x:Key="Primary7Color">#1554AD</Color>
+    <Color x:Key="Primary8Color">#3C89E8</Color>
+    <Color x:Key="Primary9Color">#1668DC</Color>
+    <Color x:Key="Primary10Color">#1554AD</Color>
+
+    <Color x:Key="PrimaryColor">#1668DC</Color> <!--  = Primary6Color  -->
     <Color x:Key="InfoColor">#1668DC</Color>
     <Color x:Key="SuccessColor">#49AA19</Color>
     <Color x:Key="ProcessingColor">#1668DC</Color>
-    <Color x:Key="Blue3">#15325B</Color>
-    <Color x:Key="Blue4">#15417E</Color>
+    <Color x:Key="Blue3">#15325B</Color> <!--  = Primary3Color  -->
+    <Color x:Key="Blue4">#15417E</Color> <!--  = Primary4Color  -->
     <Color x:Key="ErrorColor">#DC4446</Color>
     <Color x:Key="HighlightColor">#DC4446</Color>
     <Color x:Key="WarningColor">#D89614</Color>
@@ -26,7 +42,7 @@
     <Color x:Key="TextTertiaryColor">#73FFFFFF</Color>
     <Color x:Key="BorderColorBase">#424242</Color>
     <Color x:Key="BorderColorSecondary">#303030</Color>
-    <Color x:Key="BackgroundColorLight">#111A2C</Color>
+    <Color x:Key="BackgroundColorLight">#111A2C</Color> <!--  = Primary1Color  -->
     <Color x:Key="BackgroundColorBase">#14FFFFFF</Color>
     <Color x:Key="DisabledColor">#40FFFFFF</Color>
     <Color x:Key="DisabledBackground">#14FFFFFF</Color>
@@ -43,15 +59,55 @@
     <Color x:Key="WarningBorderColor">#594214</Color>
     <Color x:Key="ErrorBackgroundColor">#2C1618</Color>
     <Color x:Key="ErrorBorderColor">#5B2526</Color>
-    <Color x:Key="PrimaryHoverColor">#3C89E8</Color>
-    <Color x:Key="PrimaryActiveColor">#1554AD</Color>
+    <Color x:Key="PrimaryHoverColor">#3C89E8</Color> <!--  = Primary5Color  -->
+    <Color x:Key="PrimaryActiveColor">#1554AD</Color> <!--  = Primary7Color  -->
     <Color x:Key="ShadowColor">#000000</Color>
 
     <!--  Color Brushs  -->
     <SolidColorBrush
+        x:Key="Primary1Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary1Color}" />
+    <SolidColorBrush
+        x:Key="Primary2Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary2Color}" />
+    <SolidColorBrush
+        x:Key="Primary3Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary3Color}" />
+    <SolidColorBrush
+        x:Key="Primary4Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary4Color}" />
+    <SolidColorBrush
+        x:Key="Primary5Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary5Color}" />
+    <SolidColorBrush
+        x:Key="Primary6Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary6Color}" />
+    <SolidColorBrush
+        x:Key="Primary7Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary7Color}" />
+    <SolidColorBrush
+        x:Key="Primary8Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary8Color}" />
+    <SolidColorBrush
+        x:Key="Primary9Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary9Color}" />
+    <SolidColorBrush
+        x:Key="Primary10Brush"
+        Options:Freeze="True"
+        Color="{StaticResource Primary10Color}" />
+    <SolidColorBrush
         x:Key="PrimaryBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
     <SolidColorBrush
         x:Key="InfoBrush"
         Options:Freeze="True"
@@ -127,11 +183,11 @@
     <SolidColorBrush
         x:Key="PrimaryHoverBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryHoverColor}" />
+        Color="{StaticResource Primary5Color}" />
     <SolidColorBrush
         x:Key="PrimaryActiveBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryActiveColor}" />
+        Color="{StaticResource Primary7Color}" />
 
     <!-- Background color for `<Window>` -->
     <SolidColorBrush
@@ -204,13 +260,13 @@
     <SolidColorBrush
         x:Key="OutlineBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
 
     <!--  background of header and selected item  -->
     <SolidColorBrush
         x:Key="BackgroundBrushLight"
         Options:Freeze="True"
-        Color="{StaticResource BackgroundColorLight}" />
+        Color="{StaticResource Primary1Color}" />
 
     <!--  Disabled states  -->
     <SolidColorBrush
@@ -226,7 +282,7 @@
     <SolidColorBrush
         x:Key="WindowTilteBarBackground"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
     <SolidColorBrush
         x:Key="WindowButtonFocusedBrush"
         Options:Freeze="True"
@@ -244,7 +300,7 @@
     <SolidColorBrush
         x:Key="ButtonPrimaryBackground"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
     <SolidColorBrush
         x:Key="ButtonDefaultForeground"
         Options:Freeze="True"
@@ -286,13 +342,13 @@
     <SolidColorBrush
         x:Key="CheckBoxBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
 
     <!--  Radio  -->
     <SolidColorBrush
         x:Key="RadioDotBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
 
     <!--  Radio Button  -->
     <SolidColorBrush
@@ -320,7 +376,7 @@
     <SolidColorBrush
         x:Key="InputMouseOverBorderBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
     <SolidColorBrush
         x:Key="InputDisabledBackground"
         Options:Freeze="True"
@@ -398,15 +454,15 @@
     <SolidColorBrush
         x:Key="SwitchBrush"
         Options:Freeze="True"
-        Color="{StaticResource PrimaryColor}" />
+        Color="{StaticResource Primary6Color}" />
 
     <!--Slider-->
     <SolidColorBrush
      x:Key="SliderBackgroundBrush"
      Options:Freeze="True"
-     Color="{StaticResource Blue3}" />
+     Color="{StaticResource Primary3Color}" />
     <SolidColorBrush
      x:Key="SliderHoverBrush"
      Options:Freeze="True"
-     Color="{StaticResource Blue4}" />
+     Color="{StaticResource Primary4Color}" />
 </ResourceDictionary>

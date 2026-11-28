@@ -340,11 +340,18 @@
         }
 
         /// <summary>
-        /// Derives a state color (5 = hover, 7 = active) from <paramref name="color"/> for the current theme:
-        /// on a dark container background the Ant Design dark algorithm is used.
+        /// Derives a state color (5 = hover, 7 = active) from <paramref name="color"/> for the current theme.
+        /// The primary color takes the theme's Primary{index}Color token; any other color (Danger, a custom
+        /// EffectBrush) is computed, on a dark container background with the Ant Design dark algorithm.
         /// </summary>
         private static Color Tone(Button button, Color color, int index)
         {
+            if (button.TryFindResource("Primary6Color") is Color primary && primary == color
+                && button.TryFindResource($"Primary{index}Color") is Color token)
+            {
+                return token;
+            }
+
             var background = FindColor(button, "ContainerBackgroundColor", Colors.White);
 
             return IsDark(background)
