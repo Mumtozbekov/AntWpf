@@ -11,7 +11,19 @@
         Foreground="{DynamicResource TextBrush}">
     <DockPanel>
         <Border DockPanel.Dock="Top" Padding="10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BorderBrushSecondary}">
-            <Ant:Button x:Name="themeButton" HorizontalAlignment="Right" Content="Dark" Click="ThemeButton_Click"/>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <!--  Primary seed colors: Ant Design preset palettes (blue is the theme default)  -->
+                <ComboBox x:Name="primaryColor" Width="120" Margin="0,0,8,0" SelectedIndex="0" SelectionChanged="PrimaryColor_SelectionChanged">
+                    <ComboBoxItem Content="Blue (default)" />
+                    <ComboBoxItem Content="Purple" Tag="#722ED1" />
+                    <ComboBoxItem Content="Cyan" Tag="#13C2C2" />
+                    <ComboBoxItem Content="Green" Tag="#52C41A" />
+                    <ComboBoxItem Content="Magenta" Tag="#EB2F96" />
+                    <ComboBoxItem Content="Volcano" Tag="#FA541C" />
+                    <ComboBoxItem Content="Gold" Tag="#FAAD14" />
+                </ComboBox>
+                <Ant:Button x:Name="themeButton" Content="Dark" Click="ThemeButton_Click"/>
+            </StackPanel>
         </Border>
         <Border DockPanel.Dock="Left" Width="180" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource BorderBrushSecondary}">
             <ListBox x:Name="navigation" Style="{StaticResource Sample.Navigation}" SelectionChanged="Navigation_SelectionChanged">

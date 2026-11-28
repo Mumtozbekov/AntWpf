@@ -14,7 +14,8 @@
           5 Hover, 6 Primary, 7 Active, 8 TextHover, 9 Text, 10 TextActive.
           Ant Design v5 dark algorithm: the light palette mixed over #141414, tokens 8..10 repeat 5..7.
           Brushes that follow the primary color reference these tokens; Color keys (PrimaryColor,
-          PrimaryHoverColor, ...) repeat the value because a Color resource cannot alias another one.  -->
+          PrimaryHoverColor, ...) repeat the value because a Color resource cannot alias another one.
+          ThemeManager.SetPrimaryColor overrides the same keys: keep its key table in sync.  -->
     <Color x:Key="Primary1Color">#111A2C</Color>
     <Color x:Key="Primary2Color">#112545</Color>
     <Color x:Key="Primary3Color">#15325B</Color>
