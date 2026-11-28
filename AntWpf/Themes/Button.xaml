@@ -59,11 +59,17 @@
                                     <!--  Content  -->
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Controls:Icon
+                                <!--
+                                    Sized by FontSize (1em), Foreground is inherited from the button.
+                                    TargetNullValue: the icon is collapsed when Icon is null, any non-spinning key will do.
+                                -->
+                                <Controls:AntIcon
                                     x:Name="Icon"
                                     Margin="0,0,8,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
                                     Focusable="False"
-                                    Type="{TemplateBinding Icon}" />
+                                    Key="{Binding Icon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, TargetNullValue={x:Static Controls:AntIconKey.CloseOutlined}}" />
                                 <ContentPresenter
                                     x:Name="Content"
                                     Grid.Column="1"
@@ -108,18 +114,23 @@
                     <ControlTemplate.Triggers>
                         <!--  Loading State  -->
                         <Trigger Property="Loading" Value="True">
-                            <Setter TargetName="Icon" Property="Type" Value="loading" />
+                            <Setter TargetName="Icon" Property="Key" Value="LoadingOutlined" />
                         </Trigger>
                         <!--  Content State  -->
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter TargetName="Icon" Property="Margin" Value="0" />
                             <Setter TargetName="Icon" Property="Grid.ColumnSpan" Value="2" />
                         </Trigger>
-                        <Trigger SourceName="Icon" Property="Type" Value="{x:Null}">
+                        <!--  No icon (a loading button always shows LoadingOutlined)  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Icon" Value="{x:Null}" />
+                                <Condition Property="Loading" Value="False" />
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="Content" Property="Grid.Column" Value="0" />
                             <Setter TargetName="Content" Property="Grid.ColumnSpan" Value="2" />
                             <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
+                        </MultiTrigger>
                         <!--  Shape Circle  -->
                         <Trigger Property="Shape" Value="Circle">
                             <Setter TargetName="Icon" Property="FontSize" Value="{Binding FontSize, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, Converter={converters:AdditionConverter}, ConverterParameter=2}" />
