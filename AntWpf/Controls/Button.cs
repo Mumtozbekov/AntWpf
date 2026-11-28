@@ -46,14 +46,16 @@
         }
 
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(string), typeof(Button), new PropertyMetadata(null));
+            DependencyProperty.Register("Icon", typeof(AntIconKey?), typeof(Button), new PropertyMetadata(null));
 
         /// <summary>
-        /// Gets/sets the icon type of the button.
+        /// Gets/sets the icon of the button.
+        /// In XAML both <c>Icon="SearchOutlined"</c> and the legacy <c>Icon="search"</c> are accepted
+        /// (see <see cref="AntIconKeyConverter"/>).
         /// </summary>
-        public string Icon
+        public AntIconKey? Icon
         {
-            get { return (string)GetValue(IconProperty); }
+            get { return (AntIconKey?)GetValue(IconProperty); }
             set { SetValue(IconProperty, value); }
         }
 

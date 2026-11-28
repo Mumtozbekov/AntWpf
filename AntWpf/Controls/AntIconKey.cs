@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AntWpf.Controls
 {
+    [System.ComponentModel.TypeConverter(typeof(AntIconKeyConverter))]
     public enum AntIconKey
     {
         //StepBackward,
