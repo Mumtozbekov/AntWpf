@@ -41,6 +41,15 @@ Use `DynamicResource` for theme colors in your own XAML so they follow the theme
 ```
 To customize colors, override brush keys (for example `PrimaryBrush`) in a dictionary merged after the theme dictionary. Overriding only a color key such as `PrimaryColor` does not change the brushes.
 
+### Primary color
+
+Both themes define the ten Ant Design v5 primary tokens `Primary1Color`..`Primary10Color` and `Primary1Brush`..`Primary10Brush` (1 background, 3 border, 5 hover, 6 primary, 7 active, ...). To use your own brand color, pass it as a seed:
+```
+ThemeManager.SetPrimaryColor(Color.FromRgb(0x72, 0x2E, 0xD1));   // purple
+ThemeManager.SetPrimaryColor(null);                              // back to the theme's blue
+```
+The palette is generated with the Ant Design color algorithm for the current theme and regenerated when `SetTheme` switches it (in the Dark theme the seed is mixed over the dark background, as in Ant Design). All primary-derived keys follow it (`PrimaryBrush`, `PrimaryHoverBrush`, `ButtonPrimaryBackground`, `CheckBoxBrush`, `SwitchBrush`, ...); Info, Success, Warning, Error and Link keep their colors. `ColorPalette.Generate(seed, dark)` returns the same ten colors.
+
 ## Buttons
 
 ![Buttons](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/images/buttons.png?raw=true)

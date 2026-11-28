@@ -13,7 +13,8 @@
           5 Hover, 6 Primary, 7 Active, 8 TextHover, 9 Text, 10 TextActive.
           Ant Design v5 light palette of the seed (blue-1..10).
           Brushes that follow the primary color reference these tokens; Color keys (PrimaryColor,
-          PrimaryHoverColor, ...) repeat the value because a Color resource cannot alias another one.  -->
+          PrimaryHoverColor, ...) repeat the value because a Color resource cannot alias another one.
+          ThemeManager.SetPrimaryColor overrides the same keys: keep its key table in sync.  -->
     <Color x:Key="Primary1Color">#E6F4FF</Color>
     <Color x:Key="Primary2Color">#BAE0FF</Color>
     <Color x:Key="Primary3Color">#91CAFF</Color>

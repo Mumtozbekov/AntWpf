@@ -74,21 +74,60 @@
                 B = Unmix(background.B, color.B, darkBaseOpacity)
             };
 
-            var (lightIndex, opacity) = darkColorMap[darkTokenMap[index - 1]];
-            var light = Toning(seed, lightIndex + 1);
+            return DarkToken(seed, index, background);
+        }
 
-            return new Color
+        /// <summary>
+        /// Generates the ten Ant Design v5 color tokens (1 Bg .. 6 Primary .. 10 TextActive) of a seed color.
+        /// </summary>
+        /// <param name="seed">The seed color, e.g. #1677FF. Token 6 of the light palette is the seed itself.</param>
+        /// <param name="dark">
+        /// <see langword="true"/> for the Ant Design v5 dark algorithm: the light palette mixed over
+        /// <paramref name="background"/>, tokens 8..10 repeat 5..7.
+        /// </param>
+        /// <param name="background">The dark container background, #141414 when omitted. Ignored for the light palette.</param>
+        /// <returns>An array of 10 colors; element 0 is token 1.</returns>
+        public static Color[] Generate(Color seed, bool dark = false, Color? background = null)
+        {
+            var colors = new Color[darkTokenMap.Length];
+            var back   = background ?? Color.FromRgb(0x14, 0x14, 0x14);
+
+            for (int i = 0; i < colors.Length; i++)
             {
-                A = color.A,
-                R = Mix(background.R, light.R, opacity),
-                G = Mix(background.G, light.G, opacity),
-                B = Mix(background.B, light.B, opacity)
-            };
+                colors[i] = dark ? DarkToken(seed, i + 1, back) : LightToken(seed, i + 1);
+            }
+
+            return colors;
         }
 
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Light palette color <paramref name="index"/> (1..10); as in @ant-design/colors, 6 is the seed unchanged.
+        /// </summary>
+        private static Color LightToken(Color seed, int index)
+        {
+            return index == lightColorCount + 1 ? seed : Toning(seed, index);
+        }
+
+        /// <summary>
+        /// Dark color token <paramref name="index"/> (1..10) of <paramref name="seed"/> over <paramref name="background"/>.
+        /// </summary>
+        private static Color DarkToken(Color seed, int index, Color background)
+        {
+            var (lightIndex, opacity) = darkColorMap[darkTokenMap[index - 1]];
+            var light = LightToken(seed, lightIndex + 1);
+
+            return new Color
+            {
+                A = seed.A,
+                R = Mix(background.R, light.R, opacity),
+                G = Mix(background.G, light.G, opacity),
+                B = Mix(background.B, light.B, opacity)
+            };
+        }
 
         /// <summary>
         /// tinycolor.mix: background + (color - background) * amount, per channel.
@@ -108,7 +147,15 @@
 
         private static byte ToByte(double value)
         {
-            return (byte)Math.Max(0, Math.Min(255, Math.Round(value, MidpointRounding.AwayFromZero)));
+            return (byte)Math.Max(0, Math.Min(255, Round(value)));
+        }
+
+        /// <summary>
+        /// JavaScript Math.round for the non-negative values used here (.NET rounds 178.5 to 178, JS to 179).
+        /// </summary>
+        private static double Round(double value)
+        {
+            return Math.Round(value, MidpointRounding.AwayFromZero);
         }
 
         private static double GetHue(HSV hsv, int i, bool isLight)
@@ -133,7 +180,7 @@
                 hue -= 360;
             }
 
-            return Math.Round(hue);
+            return Round(hue);
         }
         private static double GetSaturation(HSV hsv, int i, bool isLight)
         {
@@ -141,15 +188,15 @@
 
             if (isLight)
             {
-                saturation = Math.Round(hsv.S * 100) - saturationStep * i;
+                saturation = Round(hsv.S * 100) - saturationStep * i;
             }
             else if (i == darkColorCount)
             {
-                saturation = Math.Round(hsv.S * 100) + saturationStep;
+                saturation = Round(hsv.S * 100) + saturationStep;
             }
             else
             {
-                saturation = Math.Round(hsv.S * 100) + saturationStep2 * i;
+                saturation = Round(hsv.S * 100) + saturationStep2 * i;
             }
 
             if (saturation > 100)
@@ -167,16 +214,16 @@
                 saturation = 6;
             }
 
-            return Math.Round(saturation);
+            return Round(saturation);
         }
 
         private static double GetValue(HSV hsv, int i, bool isLight)
         {
             if (isLight)
             {
-                return Math.Round(hsv.V * 100) + brightnessStep1 * i;
+                return Round(hsv.V * 100) + brightnessStep1 * i;
             }
-            return Math.Round(hsv.V * 100) - brightnessStep2 * i;
+            return Round(hsv.V * 100) - brightnessStep2 * i;
         }
 
         private static Color Hsv2Color(double h, double s, double v, byte a)
@@ -201,7 +248,7 @@
             g = Math.Min(255, Math.Max(0, g * 255));
             b = Math.Min(255, Math.Max(0, b * 255));
 
-            return new Color() { R = (byte)Math.Round(r), G = (byte)Math.Round(g), B = (byte)Math.Round(b), A = a };
+            return new Color() { R = (byte)Round(r), G = (byte)Round(g), B = (byte)Round(b), A = a };
         }
 
         private static HSV Color2Hsv(Color color)

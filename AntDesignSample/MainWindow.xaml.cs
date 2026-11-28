@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 using AntDesignSample.Pages;
 using AntWpf;
@@ -50,6 +51,15 @@ namespace AntDesignSample
         {
             ThemeManager.SetTheme(ThemeManager.Current == AntTheme.Light ? AntTheme.Dark : AntTheme.Light);
             themeButton.Content = ThemeManager.Current == AntTheme.Light ? "Dark" : "Light";
+        }
+
+        private void PrimaryColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Raised by SelectedIndex while InitializeComponent runs, before the Application is fully set up.
+            if (!IsInitialized) return;
+
+            var tag = (primaryColor.SelectedItem as ComboBoxItem)?.Tag as string;
+            ThemeManager.SetPrimaryColor(tag == null ? null : (Color)ColorConverter.ConvertFromString(tag));
         }
     }
 }
