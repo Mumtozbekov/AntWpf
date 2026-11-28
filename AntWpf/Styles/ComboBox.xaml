@@ -144,13 +144,15 @@
                                               Style="{StaticResource Ant.ComboBoxToggleButton}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
-                                    <Controls:Icon Type="down" />
+                                    <Controls:AntIcon Key="DownOutlined" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" />
                                 </ToggleButton>
                                 <!-- Clear -->
-                                <Controls:Icon x:Name="Clear"
+                                <Controls:AntIcon x:Name="Clear"
                                                Grid.Column="2"
                                                Margin="5 0 1 0"
-                                               Type="close"
+                                               Key="CloseOutlined"
+                                               HorizontalAlignment="Center"
+                                               Background="Transparent"
                                                Focusable="False"
                                                Visibility="Collapsed"
                                                Controls:Input.ClearEnabled="True"

@@ -116,10 +116,13 @@
                                     By setting up the locally-defined resource dictionary.
                                 -->
                                 <Setter.Value>
-                                    <Controls:Icon
+                                    <Controls:AntIcon
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
                                         Controls:Input.ClearEnabled="True"
-                                        Style="{StaticResource Ant.Clearable}"
-                                        Type="close" />
+                                        Key="CloseOutlined"
+                                        Style="{StaticResource Ant.Clearable}" />
                                 </Setter.Value>
                             </Setter>
                         </MultiTrigger>
