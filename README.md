@@ -49,13 +49,14 @@ To customize colors, override brush keys (for example `PrimaryBrush`) in a dicti
 
     <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Ant:Button Type="Primary" Margin="10,0" Content="Button1"/>
-        <Ant:Button Type="Primary" Shape="Circle" Icon="search" Margin="10,0" />
+        <Ant:Button Type="Primary" Shape="Circle" Icon="SearchOutlined" Margin="10,0" />
         <Ant:Button Type="Dashed" Margin="10,0" Content="Button2"/>
         <Ant:Button Type="Danger" Margin="10,0" Content="Button3"/>
         <Ant:Button Type="Primary" Margin="10,10" Loading="True" Content="Loading"/>
         <Ant:Button Type="Primary" Shape="Circle"  Margin="10,10" Loading="True" />
     </WrapPanel>
 ```
+`Icon` takes an `AntIconKey` (see [Icons](#icons)). In XAML the old names such as `search` or `check-circle.fill` are still accepted; in C# use the enum: `button.Icon = AntIconKey.SearchOutlined;`.
 ## Inputs
 
 ![Inputs](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/images/inputs.png?raw=true)
@@ -108,8 +109,16 @@ To customize colors, override brush keys (for example `PrimaryBrush`) in a dicti
 
 ![Inputs](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/images/icons.png?raw=true)
 ```
-  <Ant:AntIcon Key="AntCloudOutlined" Margin="4" Height="32" HorizontalAlignment="Center" Width="32"/>
+  <!-- Sized by FontSize (1em), color inherited from Foreground -->
+  <Ant:AntIcon Key="AntCloudOutlined" />
+  <Ant:AntIcon Key="AntCloudOutlined" FontSize="32" Foreground="{DynamicResource PrimaryBrush}" />
+  <Ant:AntIcon Key="AntCloudOutlined" Width="32" Height="32" />
+
+  <!-- LoadingOutlined spins automatically; Spin turns it on or off for any icon -->
+  <Ant:AntIcon Key="LoadingOutlined" />
+  <Ant:AntIcon Key="SyncOutlined" Spin="True" />
 ```
+All keys are listed in the `AntIconKey` enum (the sample app has a searchable Icons page). The old `Icon` element (`<Ant:Icon Type="search" />`) is obsolete; use `AntIcon` instead.
 ## Tag
 
 ![Tag](https://github.com/Mumtozbekov/AntWpf/blob/master/AntWpf/images/tag.png?raw=true)

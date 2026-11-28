@@ -10,6 +10,7 @@
     /// <summary>
     /// Semantic vector graphics.
     /// </summary>
+    [Obsolete("Use AntIcon")]
     public class Icon : FrameworkElement, ISpinable
     {
         #region Fields

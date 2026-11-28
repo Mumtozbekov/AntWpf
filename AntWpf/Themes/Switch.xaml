@@ -115,8 +115,11 @@
                                     <Border.Effect>
                                         <DropShadowEffect  Direction="270" BlurRadius="4" ShadowDepth="1" Color="{DynamicResource SwitchHandleShadowColor}" Opacity="0.2" />
                                     </Border.Effect>
-                                    <Controls:Icon x:Name="Icon"
-                                           Type="loading"
+                                    <Controls:AntIcon x:Name="Icon"
+                                           Key="LoadingOutlined"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Background="Transparent"
                                            Foreground="{DynamicResource TextBrush}"
                                            Visibility="{Binding Loading, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, 
                                                             Converter={StaticResource BooleanToVisibilityConverter}}" />
