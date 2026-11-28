@@ -40,7 +40,8 @@
                                 Margin="0,0,8,0"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource InfoBrush}"
-                                RenderTransformOrigin="0.5,0.5">
+                                RenderTransformOrigin="0.5,0.5"
+                                Spin="False">
                                 <Controls:AntIcon.RenderTransform>
                                     <RotateTransform />
                                 </Controls:AntIcon.RenderTransform>
